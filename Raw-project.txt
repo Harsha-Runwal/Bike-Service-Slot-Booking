@@ -1,0 +1,20 @@
+ 
+
+ONLINE VEHICLE SERVICE  SLOT BOOKING SYSTEM
+
+1.Inclusion of multiple vendors
+2. Consider cases like how if one cancles the booking
+3. Consider the time required for differnt vechile model will need diff time
+4. Add more Features 
+5.Report and bill generation format
+6. Advanttages and disadvanatges
+7.Uercase Diagram
+8.public github link
+
+
+
+
+
+
+
+
