@@ -1,0 +1,27 @@
+package com.bssb.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bssb.dao.CustomerDao;
+import com.bssb.entity.Customer;
+
+@RestController
+@RequestMapping(path="/customer")
+public class CustomerController {
+	
+		@Autowired
+	     private CustomerDao dao;
+	    
+	    @PostMapping("/register")
+	    public Customer register(@RequestBody Customer customer)
+	    {
+	    	
+	    	return dao.registerCustomer(customer);
+	    }
+	    
+
+}
