@@ -1,10 +1,6 @@
 package com.bssb.entity;
 
-
-
-
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name="SERVICE_PLAN")
@@ -31,13 +25,15 @@ public class Plan {
 	private String description;
 	private String image;
 	private float cost;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="SERVICE_CENTER_ID")
-	private ServiceCenter serviceCenterId ;
+	private ServiceCenter serviceCenterId;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Opeartions> operationList;
+	private Set<Operations> operationList;
 
+	
 	public Plan() {
 	
 	}
@@ -86,11 +82,11 @@ public class Plan {
 
 	
 
-	public Set<Opeartions> getOperationList() {
+	public Set<Operations> getOperationList() {
 		return operationList;
 	}
 
-	public void setOperationList(Set<Opeartions> operationList) {
+	public void setOperationList(Set<Operations> operationList) {
 		this.operationList = operationList;
 	}
 	

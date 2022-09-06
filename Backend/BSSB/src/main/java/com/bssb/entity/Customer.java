@@ -1,14 +1,10 @@
 package com.bssb.entity;
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 
 @Entity
@@ -30,10 +26,11 @@ public class Customer {
 		
 		@Column(name="PASSWORD")
 		private String password;
-		
+		 
 		public Customer() {
 			
 		}
+		
 		public Customer(String firstName, String lastName, String email, String mobileNo, String password) {
 			
 			this.firstName = firstName;
@@ -75,7 +72,4 @@ public class Customer {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-		
-		
-
 }

@@ -1,7 +1,5 @@
 package com.bssb.entity;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +26,6 @@ public class ServiceCenter {
 	@Column(name="REGISTRATION_NO")
 	private int regNo;
 	private int capacity;
-	
 	
 	public ServiceCenter() {
 		
