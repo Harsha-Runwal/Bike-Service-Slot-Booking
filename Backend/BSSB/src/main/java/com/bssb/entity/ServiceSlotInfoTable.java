@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +28,11 @@ public class ServiceSlotInfoTable {
 	@Column
 	private int remainingSlot;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "SERVICE_CENTER_ID")
 	private ServiceCenter serviceCenterId;
+
+	private int regNo;
 	
 	public ServiceSlotInfoTable()
 	{
@@ -71,13 +74,11 @@ public class ServiceSlotInfoTable {
 		this.remainingSlot = remainingSlot;
 	}
 
+	public int getRegNo() {
+		return regNo;
+	}
+
 	public ServiceCenter getServiceCenterId() {
 		return serviceCenterId;
 	}
-
-	public void setServiceCenterId(ServiceCenter serviceCenterId) {
-		this.serviceCenterId = serviceCenterId;
-	}
-	
-	
 }

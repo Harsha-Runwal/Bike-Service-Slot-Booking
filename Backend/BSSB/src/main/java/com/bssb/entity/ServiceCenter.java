@@ -1,10 +1,13 @@
 package com.bssb.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +28,9 @@ public class ServiceCenter {
 	private int pincode;
 	@Column(name="REGISTRATION_NO")
 	private int regNo;
-	private int capacity;
+	
+	@OneToOne(mappedBy = "serviceCenterId" ,cascade = CascadeType.ALL)
+	private ServiceSlotInfoTable capacity;
 	
 	public ServiceCenter() {
 		
@@ -33,7 +38,7 @@ public class ServiceCenter {
 
 
 	public ServiceCenter( String name, String city, String address, String email, String contactNo,
-			String password, int pincode, int regNo, int capacity) {
+			String password, int pincode, int regNo, ServiceSlotInfoTable capacity) {
 		
 		this.name = name;
 		this.city = city;
@@ -137,24 +142,14 @@ public class ServiceCenter {
 	}
 
 
-	public int getCapacity() {
+	public ServiceSlotInfoTable getCapacity() {
 		return capacity;
 	}
 
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(ServiceSlotInfoTable capacity) {
 		this.capacity = capacity;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	   
+
 
 }

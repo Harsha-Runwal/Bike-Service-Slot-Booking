@@ -33,7 +33,6 @@ public class Plan {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Operations> operationList;
 
-	
 	public Plan() {
 	
 	}

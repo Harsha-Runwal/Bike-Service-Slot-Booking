@@ -8,8 +8,6 @@ import com.bssb.repository.CustomerRepository;
 
 @Component
 public class CustomerDao {
-	
-	      
 	      private CustomerRepository customerRepo;
 	      public  CustomerDao()
 	      {
@@ -24,8 +22,6 @@ public class CustomerDao {
 	    
 	       public Customer registerCustomer(Customer customer)
 	       {
-	    	 
 	    	    return customerRepo.save(customer);
 	       }
-
 }
