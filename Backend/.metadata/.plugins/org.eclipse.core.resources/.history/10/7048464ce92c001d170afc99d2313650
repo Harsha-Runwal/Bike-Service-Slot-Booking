@@ -1,0 +1,54 @@
+package com.bssb.entity;
+
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="SERVICE_CENTER_DETAILS")
+public class ServiceCenter {
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@Column(name="SERVICE_CENTER_ID")
+	private int id;
+	private String name;
+	private String city;
+	private String address;
+	private String email;
+	@Column(name="CONTACT_NO")
+	private String contactNo;
+	private String password;
+	private int pincode;
+	@Column(name="REGISTRATION_NO")
+	private int regNo;
+	private int capacity;
+	public ServiceCenter( String name, String city, String address, String email, String contactNo,
+			String password, int pincode, int regNo, int capacity) {
+		
+		this.name = name;
+		this.city = city;
+		this.address = address;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.password = password;
+		this.pincode = pincode;
+		this.regNo = regNo;
+		this.capacity = capacity;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	   
+
+}

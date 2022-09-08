@@ -1,0 +1,47 @@
+TITLE: ONLINE VEHICLE SERVICING SYSTEM
+
+SCOPE:	most of the automobile showrooms takes the servicing orders early in morning so 
+		for a particulay day it will update there daily vehicle servicing capacity. 
+		Application user will choose his registered showroom and will choose his vehicle
+		model, will choose operations to be perform on vehicle which are listed by showroom,
+		(in short will fill all the form which he was filing offline), additional work to be
+		done on vehicle, choose date of booking from available dates, and vehicle delivery
+		time(within specified time as by showroom). 
+		User will register his vehicle details at the time of registration , so when he wants to 
+		repair his vehicle he will just book time slot.
+
+ACTORS:  END USER- layman vehicle user,(bike)
+         service provider- showroom side character
+         ADMIN.
+
+DATABASE: MySQL
+
+TABLES: user registration form (name, contact detail, vehicle model, address, )
+        Service provider table(service providers details, showroom owner) showroom master table--sub table of each showroom
+        Vehicle details(model, company, ....) related to registration form (showroom id foreign key)
+        Services/operations(....) connection to vehicle 
+        Payment details(operation wise)
+
+FLOW OF EXECUTION: 1)user registration login UI  (varification) registration and signin option
+                        registration page
+                            personal details(username, password, name, contact, address,email verification, city, pincode....), 
+                            vehicle(company, model, select nearest showroom (derived from city and company),) 
+                        signin page
+                            new vehicle registration
+                            he will see details of his vehicle --
+                            new servicing request----  
+                            check servicing spot availability for another vehicle -- with checking with service center slot availibility 
+                            after checking with slot availibility will go on next page which will be book slot
+                            next page slot booked details , billing details, details of delivery
+                            logout option
+
+                   2)showroom registration UI (verification)registration and signin option
+                        registration page
+                            showroom details(showroom name, contactno, emailid, address.....,)
+                            vehicle details(vahicle details)
+                            services details(different services/operations, billing details)
+                         ***slot booking logic?***
+                        signin page
+                            booking details of user, slot management, 
+                            today's service requests
+                            logout option

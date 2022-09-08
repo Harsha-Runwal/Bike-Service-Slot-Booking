@@ -1,0 +1,49 @@
+package study.jpa.Springboot_jpa.Entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table
+public class Opeartions {
+	
+		@Id
+		@GeneratedValue(strategy=GenerationType.IDENTITY)
+		private int id;
+		@Column
+		private String name;
+		@Column
+		private float cost;
+		public Opeartions() {
+			
+		}
+		public Opeartions(String name, float cost) {
+			
+			this.name = name;
+			this.cost = cost;
+		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public float getCost() {
+			return cost;
+		}
+		public void setCost(float cost) {
+			this.cost = cost;
+		}
+		
+		
+
+}

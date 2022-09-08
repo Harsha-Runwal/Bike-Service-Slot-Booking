@@ -1,0 +1,16 @@
+package com.bssb.application;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+@Configuration
+@ComponentScan(basePackages ="com.bssb")
+@SpringBootApplication
+public class BssbApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BssbApplication.class, args);
+	}
+
+}
