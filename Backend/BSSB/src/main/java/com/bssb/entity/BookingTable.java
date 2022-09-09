@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +26,6 @@ public class BookingTable {
 	private String modelNo;
 
 	@Column
-	private int slotId;
-
-	@Column
 	private boolean status;
 
 	@Column
@@ -37,11 +35,15 @@ public class BookingTable {
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customerId;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private ServiceSlotInfoTable slotId;
+	
 	public int getbookingId() {
 		return bookingId;
 	}
 
-	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, int slotId, boolean status,
+	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, ServiceSlotInfoTable slotId, boolean status,
 			float totalCost) {
 		super();
 		this.vehicleRegNo = vehicleRegNo;
@@ -71,11 +73,13 @@ public class BookingTable {
 		this.modelNo = modelNo;
 	}
 
-	public int getslotId() {
+	
+
+	public ServiceSlotInfoTable getSlotId() {
 		return slotId;
 	}
 
-	public void setslotId(int slotId) {
+	public void setSlotId(ServiceSlotInfoTable slotId) {
 		this.slotId = slotId;
 	}
 
