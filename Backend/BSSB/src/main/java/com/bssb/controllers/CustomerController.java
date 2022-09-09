@@ -24,4 +24,5 @@ public class CustomerController {
 	    	return dao.registerCustomer(customer);
 	    }
 	    
+	    
 }

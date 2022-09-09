@@ -1,5 +1,4 @@
 package com.bssb.entity;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,11 +26,11 @@ public class ServiceSlotInfoTable {
 	@Column
 	private int remainingSlot;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "SERVICE_CENTER_ID")
-	private ServiceCenter serviceCenterId;
-
 	private int regNo;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "BOOKING_ID")
+	private int bookingId;
 	
 	public ServiceSlotInfoTable()
 	{
@@ -78,7 +76,11 @@ public class ServiceSlotInfoTable {
 		return regNo;
 	}
 
-	public ServiceCenter getServiceCenterId() {
-		return serviceCenterId;
+	public BookingTable getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(BookingTable bookingId) {
+		this.bookingId = bookingId;
 	}
 }

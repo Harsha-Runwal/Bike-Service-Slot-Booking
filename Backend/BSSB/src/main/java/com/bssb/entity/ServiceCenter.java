@@ -29,8 +29,7 @@ public class ServiceCenter {
 	@Column(name="REGISTRATION_NO")
 	private int regNo;
 	
-	@OneToOne(mappedBy = "serviceCenterId" ,cascade = CascadeType.ALL)
-	private ServiceSlotInfoTable capacity;
+	private int capacity;
 	
 	public ServiceCenter() {
 		
@@ -38,7 +37,7 @@ public class ServiceCenter {
 
 
 	public ServiceCenter( String name, String city, String address, String email, String contactNo,
-			String password, int pincode, int regNo, ServiceSlotInfoTable capacity) {
+			String password, int pincode, int regNo, int capacity) {
 		
 		this.name = name;
 		this.city = city;
@@ -142,14 +141,14 @@ public class ServiceCenter {
 	}
 
 
-	public ServiceSlotInfoTable getCapacity() {
+	public int getCapacity() {
 		return capacity;
 	}
 
 
-	public void setCapacity(ServiceSlotInfoTable capacity) {
+	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
-
+	
+	
 }
