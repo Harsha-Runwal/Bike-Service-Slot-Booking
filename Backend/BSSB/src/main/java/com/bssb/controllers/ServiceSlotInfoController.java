@@ -22,22 +22,23 @@ public class ServiceSlotInfoController {
 	
 	
 	@PostMapping("/addSlots")
-	public ServiceSlotInfoTable addSlot(@RequestBody ServiceSlotInfoTable slot)
+	public String addSlot(@RequestBody ServiceSlotInfoTable slot)
 	{
-		return dao.addSlot(slot);
+		dao.addSlot(slot);
+		return "successfully Added";
 	}
 	
-	@PutMapping("/changeNumberOfSlots/{date}/{regNo}/{newSlots}")
+	@PutMapping("/changeNumberOfSlots/{regNo}/{newSlots}")
 	public String changeSlots(@PathVariable String date, @PathVariable int regNo,@PathVariable int newSlots)
 	{
-		 dao.changeSlots(date,regNo,newSlots);
+		 dao.changeSlots(regNo,newSlots);
 		 return "successfully changed";
 	}
 	
-	@DeleteMapping("/deleteSlots/{date}/{regNo}")
-	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)
-	{
-		dao.deleteSlot(date, regNo);
-		return "successfully deleted";
-	}
+//	@DeleteMapping("/deleteSlots/{date}/{regNo}")
+//	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)
+//	{
+//		dao.deleteSlot(date, regNo);
+//		return "successfully deleted";
+//	}
 }

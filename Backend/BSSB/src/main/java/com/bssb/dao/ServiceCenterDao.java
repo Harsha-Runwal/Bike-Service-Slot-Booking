@@ -14,12 +14,13 @@ import com.bssb.repository.ServiceCenterRepository;
 @Component
 public class ServiceCenterDao {
 	
-	
+	  
 	  private ServiceCenterRepository centerRepo;
 	   
 	  public ServiceCenterDao() {
 		  
 	  }
+	  
 	  @Autowired
 	  public ServiceCenterDao(ServiceCenterRepository centerRepo) {
 		   this.centerRepo=centerRepo; 
@@ -41,11 +42,4 @@ public class ServiceCenterDao {
 	  }
 	  
 	  
-//	  ServiceCenter center = new ServiceCenter();
-//	  center = centerRepo.findByName(name);
-//	  
-//	  ServiceSlotInfoTable slotDetails = new ServiceSlotInfoTable();
-//	  ServiceSlotInfoDao dao = new ServiceSlotInfoDao();
-//	  
-//	  dao.slotDetailsOfCenter(,center.getRegNo())
 }

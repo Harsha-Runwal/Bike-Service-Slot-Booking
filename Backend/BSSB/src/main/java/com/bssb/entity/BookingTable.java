@@ -35,20 +35,19 @@ public class BookingTable {
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customerId;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private ServiceSlotInfoTable slotId;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private ServiceSlotInfoTable slotId;
 	
 	public int getbookingId() {
 		return bookingId;
 	}
 
-	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, ServiceSlotInfoTable slotId, boolean status,
+	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, boolean status,
 			float totalCost) {
 		super();
 		this.vehicleRegNo = vehicleRegNo;
 		this.modelNo = modelNo;
-		this.slotId = slotId;
 		this.status = status;
 		this.totalCost = totalCost;
 	}
@@ -72,17 +71,13 @@ public class BookingTable {
 	public void setmodelNo(String modelNo) {
 		this.modelNo = modelNo;
 	}
-
-	
-
-	public ServiceSlotInfoTable getSlotId() {
-		return slotId;
-	}
-
-	public void setSlotId(ServiceSlotInfoTable slotId) {
-		this.slotId = slotId;
-	}
-
+//	public ServiceSlotInfoTable getSlotId() {
+//		return slotId;
+//	}
+//
+//	public void setSlotId(ServiceSlotInfoTable slotId) {
+//		this.slotId = slotId;
+//	}
 	public boolean isstatus() {
 		return status;
 	}

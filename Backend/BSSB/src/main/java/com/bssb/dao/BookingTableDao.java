@@ -3,6 +3,7 @@ package com.bssb.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.bssb.entity.BookingTable;
+import com.bssb.entity.ServiceSlotInfoTable;
 import com.bssb.repository.BookingTableRepository;
 import com.bssb.repository.ServiceSlotInfoRepository;
 
@@ -22,8 +23,10 @@ public class BookingTableDao {
 		this.bookingRepo = bookingRepo;
 	}
 	
-	public BookingTable addBookingDetails(BookingTable booking)
+	public int addBookingDetails(BookingTable booking)
 	{
-		return bookingRepo.save(booking);
+		BookingTable book = bookingRepo.save(booking);
+		int bookingId = book.getbookingId();
+		return bookingId;
 	}
 }

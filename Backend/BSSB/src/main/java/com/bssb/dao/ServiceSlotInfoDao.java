@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bssb.entity.ServiceSlotInfoTable;
+import com.bssb.repository.ServiceCenterRepository;
 import com.bssb.repository.ServiceSlotInfoRepository;
 
 @Component
@@ -13,6 +14,8 @@ public class ServiceSlotInfoDao {
 
 	private ServiceSlotInfoRepository slotRepo;
 
+	private ServiceCenterRepository serviceRepo;
+	
 	public ServiceSlotInfoDao()
 	{
 		
@@ -22,31 +25,26 @@ public class ServiceSlotInfoDao {
 	public ServiceSlotInfoDao(ServiceSlotInfoRepository slotUpdate) {
 		this.slotRepo = slotUpdate;
 	}
-	
-	public ServiceSlotInfoTable addSlot(ServiceSlotInfoTable slot)
+	@Transactional
+	public void addSlot(ServiceSlotInfoTable slot)
 	{
-		return slotRepo.save(slot);
+		ServiceSlotInfoTable slotDetails = slotRepo.save(slot);
+		slotRepo.changeSlotForRecent(slotDetails.getTotalSlot(), slotDetails.getBookingId());
 	}
 	
+	public int getRemainingSlots(int bookingId)
+	{
+		ServiceSlotInfoTable slot=slotRepo.getRemainingSlots(bookingId);
+		return slot.getRemainingSlot();
+	}
 	public ServiceSlotInfoTable slotDetailsOfCenter(String date, int regNo)
 	{
 		return slotRepo.getByDateAndRegNo(date,regNo);
 	}
-	@Transactional
-	public void updateSlotFromDateReg(String date, int regNo)
-	{
-		slotRepo.updateSlot(date, regNo);
-	}
 	
 	@Transactional
-	 public void changeSlots(String date,int regNo,int slots)
+	 public void changeSlots(int regNo,int slots)
 	 {
-		  slotRepo.changeSlots(date,regNo,slots);
-	 }
-	 
-	@Transactional
-	 public void deleteSlot(String date, int regNo)
-	 {
-		 slotRepo.deleteSlot(date, regNo);
+		  serviceRepo.changeSlots(regNo,slots);
 	 }
 }
