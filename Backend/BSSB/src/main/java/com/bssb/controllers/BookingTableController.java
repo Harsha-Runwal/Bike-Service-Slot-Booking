@@ -27,6 +27,7 @@ public class BookingTableController {
 	@PostMapping("/newbooking")
 	public int addBooking(@RequestBody BookingTable booking)
 	{
+		 System.out.println("request coming here");
 		return dao.addBookingDetails(booking);
 	}
 	

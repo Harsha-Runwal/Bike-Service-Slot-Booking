@@ -39,6 +39,10 @@ public class BookingTable {
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private ServiceSlotInfoTable slotId;
 	
+	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH})
+	@JoinColumn(name="SERVICE_CENTER_ID")
+	private ServiceCenter serviceCenterref;
+	
 	public int getbookingId() {
 		return bookingId;
 	}
@@ -93,5 +97,15 @@ public class BookingTable {
 	public void settotalCost(float totalCost) {
 		this.totalCost = totalCost;
 	}
+
+	public ServiceCenter getServiceCenterref() {
+		return serviceCenterref;
+	}
+
+	public void setServiceCenterref(ServiceCenter serviceCenterref) {
+		this.serviceCenterref = serviceCenterref;
+	}
+	
+	
 
 }
