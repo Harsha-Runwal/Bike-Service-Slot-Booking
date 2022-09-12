@@ -14,12 +14,14 @@ import Admin from './components/Admin';
 import AboutUs from './components/AboutUs';
 import HomePage from './components/HomePage';
 
+
+
+
 export default function AppForRoutes(){
  
   return(
   < BrowserRouter >
           <Routes>  
-            
             <Route path="/" element={<Home></Home>} >
                 <Route path="HomePage" element={<HomePage></HomePage>} />
                 <Route path="Login" element={<Login></Login>} />
@@ -28,6 +30,7 @@ export default function AppForRoutes(){
                 <Route path="Customer" element={<Customer></Customer>} />
                 <Route path="ServiceCenter" element={<ServiceCenter></ServiceCenter>} />
                 <Route path="Admin" element={<Admin></Admin>} />
+                
             </Route> 
           </Routes>     
     </ BrowserRouter >
@@ -37,6 +40,7 @@ export default function AppForRoutes(){
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
     <AppForRoutes />
   </React.StrictMode>
 );

@@ -10,29 +10,8 @@ export default function Home() {
 
   return (
     <div>
-      {/*<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src={require("../images/bssb.jpg")} class="d-block w-100" alt="..."></img>
-    </div>
-    <div class="carousel-item">
-      <img src={require("../images/BikeServiceShop.jpg")} class="d-block w-100" alt="..."></img>
-    </div>
-    <div class="carousel-item">
-      <img src={require("../OIP.jpg")} class="d-block w-100" alt="..."></img>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>*/}
 <img src={require("../images/BikeServiceShop.jpg")} height="20%" width="20%" alt="..."></img>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+{/*<nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
@@ -50,7 +29,23 @@ export default function Home() {
         
       </ul>
     </div>
-</nav>
+</nav>*/}
+
+<div className="container">
+
+    <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" className="nav-link px-2 link-secondary"><Link to="/HomePage" >Home</Link></a></li>
+        <li><a href="#" className="nav-link px-2 link-dark"><Link to="/AboutUs" >About Us</Link></a></li>
+        
+      </ul>
+
+      <div className="col-md-3 text-end">
+        <button type="button" className="btn btn-outline-primary me-2"><Link to="/Login" >Login</Link></button>
+        <button type="button" className="btn btn-outline-primary me-2"><Link to="/Registration">Sign-up</Link></button>
+      </div>
+    </header>
+  </div>
 
       
                   <div className="item">

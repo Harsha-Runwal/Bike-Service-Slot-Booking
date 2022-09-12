@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
@@ -10,12 +9,12 @@ import JwtDecode from 'jwt-decode'
 
 
 export default function Login() {
-  
+  const navigate = useNavigate();
   let [loginDetails, setLoginDetails] = useState({username: '',password: '',role: ''});
   let [validationStatus, setValidationStatus]= useState(false);
   let[afterLoginStatus,setAfterLoginStatus]=useState(false);
   let [loggedInUserDetails,setLoggedInUserDetails]=useState();
-  const navigate = useNavigate();
+  
 
   let handleChange = (e) => {
     
@@ -53,9 +52,14 @@ export default function Login() {
 
         // from here write logic so show logged in user email and other link on navbar
         // same way for center decode the token and show on navbar
-        setAfterLoginStatus(true);
+        //setAfterLoginStatus(true);
       //window.location="/Home"
-      //navigate("/Home")
+      navigate("/Customer", {
+        state: {
+            name: user,
+            }
+          })
+      
   } catch (error) {
 
       console.log(error);
@@ -81,6 +85,11 @@ export default function Login() {
         let decodedToken=JwtDecode(jwt);   // decoding the token
         const user=decodedToken.sub; 
       //window.location="/HomePage"
+      navigate("/ServiceCenter", {
+        state: {
+            name: user,
+            }
+          })
   } catch (error) {
     
           if(error.response.status===401)

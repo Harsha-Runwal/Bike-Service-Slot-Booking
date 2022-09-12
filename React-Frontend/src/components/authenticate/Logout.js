@@ -1,4 +1,4 @@
-import React  from "react";
+import React  from 'react';
 import { Navigate } from "react-router-dom";
 
 
@@ -9,6 +9,6 @@ export default function Logout()
         //console.log("before removing"+token);
         localStorage.removeItem("token")
         //console.log("after removing"+token);
-     window.location="/"
+     window.location="/HomePage"
            
 }
