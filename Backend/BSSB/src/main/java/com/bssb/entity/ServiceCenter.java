@@ -1,5 +1,7 @@
 package com.bssb.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,8 +30,13 @@ public class ServiceCenter {
 	private int pincode;
 	@Column(name="REGISTRATION_NO")
 	private int regNo;
+	@Column
+	private String role;
 	
 	private int capacity;
+	
+	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.ALL})
+	private List<BookingTable> bookingtableref;
 	
 	public ServiceCenter() {
 		
@@ -53,6 +60,16 @@ public class ServiceCenter {
 
 	public int getId() {
 		return id;
+	}
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 
@@ -149,6 +166,21 @@ public class ServiceCenter {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
+
+
+	public List<BookingTable> getBookingtableref() {
+		return bookingtableref;
+	}
+
+
+	public void setBookingtableref(List<BookingTable> bookingtableref) {
+		this.bookingtableref = bookingtableref;
+	}
+
+
+	
+	
+	
 	
 	
 }

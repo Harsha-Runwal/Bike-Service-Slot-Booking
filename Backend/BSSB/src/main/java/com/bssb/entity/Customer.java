@@ -1,9 +1,11 @@
 package com.bssb.entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -23,9 +25,13 @@ public class Customer {
 		private String email;
 		@Column(name="MOBILE_NO")
 		private String mobileNo;
+		@Column
+		private String role;
 		
 		@Column(name="PASSWORD")
 		private String password;
+		@OneToOne(mappedBy = "customerId",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.REFRESH })
+		private BookingTable bookingtbaleref;
 		 
 		public Customer() {
 			
@@ -45,6 +51,27 @@ public class Customer {
 		public String getFirstName() {
 			return firstName;
 		}
+		
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
+		public BookingTable getBookingtbaleref() {
+			return bookingtbaleref;
+		}
+
+		public void setBookingtbaleref(BookingTable bookingtbaleref) {
+			this.bookingtbaleref = bookingtbaleref;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
 		public String getLastName() {
 			return LastName;
 		}
