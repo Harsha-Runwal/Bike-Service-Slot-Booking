@@ -17,10 +17,11 @@ public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,In
 
 	ServiceCenter findByName(String Name);
 	ServiceCenter findByRegNo(int regNo);
+	ServiceCenter findByEmail(String email);
 	
 	@Modifying
 	@Query("update ServiceCenter set capacity=:slots where registration_no=:regNo")
 	void changeSlots(@Param("regNo") int regNo, @Param("slots") int slots);
 
-	ServiceCenter findByEmail(String email);
+	
 }

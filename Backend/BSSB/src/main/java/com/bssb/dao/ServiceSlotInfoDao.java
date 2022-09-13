@@ -25,8 +25,8 @@ public class ServiceSlotInfoDao {
 	}
 	
 	@Autowired
-	public ServiceSlotInfoDao(ServiceSlotInfoRepository slotUpdate) {
-		this.slotRepo = slotUpdate;
+	public ServiceSlotInfoDao(ServiceSlotInfoRepository slotRepo) {
+		this.slotRepo = slotRepo;
 	}
 	/*@Transactional
 	public void addSlot(ServiceSlotInfoTable slot)

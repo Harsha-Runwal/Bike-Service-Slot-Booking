@@ -40,7 +40,7 @@ public class ServiceCenterDetailsService implements UserDetailsService {
 		 
 			System.out.println("checking" +" email cheking"+email);
 			//serviceRepo.save(new Customer("kundan","bhagat","sdad","sda","SADds","sadasd"));
-		   System.out.println("checking record in service cnetre table "+ serviceRepo.findByName("saicenter").getRegNo());
+		  
 		ServiceCenter user = serviceRepo.findByEmail(email);
 		  
 		System.out.println("afte finding by email in service center "+user);

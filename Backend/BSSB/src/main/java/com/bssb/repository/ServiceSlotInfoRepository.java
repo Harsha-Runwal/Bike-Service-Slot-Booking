@@ -15,6 +15,8 @@ import com.bssb.entity.ServiceSlotInfoTable;
 
 @Repository
 public interface ServiceSlotInfoRepository extends JpaRepository<ServiceSlotInfoTable, Integer> {
+	
+	/*
 	//booking(customer side)---------------------------------------------------------------------------------------
 	@Modifying
 	@Query("update ServiceSlotInfoTable set totalSlot =:totalSlots,remainingSlot=:totalSlots-1 where bookingId=:bookingId")
@@ -35,6 +37,7 @@ public interface ServiceSlotInfoRepository extends JpaRepository<ServiceSlotInfo
 	@Modifying
 	@Query("update ServiceSlotInfoTable s set s.remainingSlot =s.remainingSlot-1 where s.center=:center and date=:date")
 	void upDateSlot(@Param("center") ServiceCenter center,@Param("date")String date );
+	/*
 
 	//update service_slot_info_table set total_slot = 12, remaining_slot=total_slot where date='07092022' and reg_no = 126;
 	@Modifying
@@ -42,5 +45,5 @@ public interface ServiceSlotInfoRepository extends JpaRepository<ServiceSlotInfo
 	void changeSlots(@Param("date") String date, @Param("regNo") int regNo, @Param("slots") int slots);
 	@Modifying
 	@Query("delete from ServiceSlotInfoTable where date = :date and regNo = :regNo")
-	void deleteSlot(@Param("date") String date,@Param("regNo") int regNo);
+	void deleteSlot(@Param("date") String date,@Param("regNo") int regNo);*/
 }
