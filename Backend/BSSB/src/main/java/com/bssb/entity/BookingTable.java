@@ -1,5 +1,11 @@
 package com.bssb.entity;
 
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table
@@ -30,15 +38,19 @@ public class BookingTable {
 
 	@Column
 	private float totalCost;
+	@Column
+	private String bookingDate;
+	
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE})
 	@JoinColumn(name = "CUSTOMER_ID")
-	private Customer customerId;
+	private Customer customer;
 
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private ServiceSlotInfoTable slotId;
 	
+
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH})
 	@JoinColumn(name="SERVICE_CENTER_ID")
 	private ServiceCenter serviceCenterref;
@@ -48,12 +60,15 @@ public class BookingTable {
 	}
 
 	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, boolean status,
-			float totalCost) {
+			float totalCost, Customer customer,ServiceCenter serviceCenterref,String bookingDate) {
 		super();
 		this.vehicleRegNo = vehicleRegNo;
 		this.modelNo = modelNo;
 		this.status = status;
 		this.totalCost = totalCost;
+		this.customer=customer;
+		
+		this.bookingDate=bookingDate;
 	}
 
 	public BookingTable() {
@@ -105,6 +120,24 @@ public class BookingTable {
 	public void setServiceCenterref(ServiceCenter serviceCenterref) {
 		this.serviceCenterref = serviceCenterref;
 	}
+	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public String getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
 	
 	
 

@@ -1,12 +1,16 @@
 package com.bssb.repository;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
 
 @Repository
@@ -24,9 +28,13 @@ public interface ServiceSlotInfoRepository extends JpaRepository<ServiceSlotInfo
 	ServiceSlotInfoTable getByDateAndRegNo(@Param("date") String date,@Param("regNo") int regNo);
 
 	//update service_slot_info_table set remaining_slot = remaining_slot-1 where date='07092022' and reg_no = 126;
-	@Modifying
+/*	@Modifying
 	@Query("update ServiceSlotInfoTable set remainingSlot = remainingSlot-1 where date=:date and regNo =:regNo")
-	void updateSlot(@Param("date") String date, @Param("regNo") int regNo);
+	void updateSlot(@Param("date") String date, @Param("regNo") int regNo); */
+	@Transactional
+	@Modifying
+	@Query("update ServiceSlotInfoTable s set s.remainingSlot =s.remainingSlot-1 where s.center=:center and date=:date")
+	void upDateSlot(@Param("center") ServiceCenter center,@Param("date")String date );
 
 	//update service_slot_info_table set total_slot = 12, remaining_slot=total_slot where date='07092022' and reg_no = 126;
 	@Modifying

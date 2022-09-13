@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
 import com.bssb.repository.ServiceCenterRepository;
 import com.bssb.repository.ServiceSlotInfoRepository;
@@ -15,6 +16,8 @@ public class ServiceSlotInfoDao {
 	private ServiceSlotInfoRepository slotRepo;
 
 	private ServiceCenterRepository serviceRepo;
+	@Autowired
+	private ServiceCenterRepository centerRepo;
 	
 	public ServiceSlotInfoDao()
 	{
@@ -25,26 +28,27 @@ public class ServiceSlotInfoDao {
 	public ServiceSlotInfoDao(ServiceSlotInfoRepository slotUpdate) {
 		this.slotRepo = slotUpdate;
 	}
-	@Transactional
+	/*@Transactional
 	public void addSlot(ServiceSlotInfoTable slot)
 	{
 		ServiceSlotInfoTable slotDetails = slotRepo.save(slot);
 		slotRepo.changeSlotForRecent(slotDetails.getTotalSlot(), slotDetails.getBookingId());
-	}
-	
-	public int getRemainingSlots(int bookingId)
-	{
-		ServiceSlotInfoTable slot=slotRepo.getRemainingSlots(bookingId);
-		return slot.getRemainingSlot();
-	}
+	} */
+/*
 	public ServiceSlotInfoTable slotDetailsOfCenter(String date, int regNo)
 	{
 		return slotRepo.getByDateAndRegNo(date,regNo);
+	}*/
+
+	public void addSlot(ServiceSlotInfoTable slot) {
+		
+		  int registrationNo=slot.getCenter().getRegNo();
+		  ServiceCenter center=centerRepo.findByRegNo(registrationNo);
+		  slot.setCenter(center);
+		 slot.setRemainingSlot(slot.getTotalSlot());
+		 slotRepo.save(slot);
+		   
 	}
 	
-	@Transactional
-	 public void changeSlots(int regNo,int slots)
-	 {
-		  serviceRepo.changeSlots(regNo,slots);
-	 }
+	
 }

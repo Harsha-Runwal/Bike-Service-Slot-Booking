@@ -1,10 +1,13 @@
 package com.bssb.entity;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,8 +33,8 @@ public class Customer {
 		
 		@Column(name="PASSWORD")
 		private String password;
-		@OneToOne(mappedBy = "customerId",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.REFRESH })
-		private BookingTable bookingtbaleref;
+		@OneToMany(mappedBy = "customer",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.REFRESH })
+		private List <BookingTable> bookingtbaleref;
 		 
 		public Customer() {
 			
@@ -60,11 +63,13 @@ public class Customer {
 			this.role = role;
 		}
 
-		public BookingTable getBookingtbaleref() {
+		
+
+		public List<BookingTable> getBookingtbaleref() {
 			return bookingtbaleref;
 		}
 
-		public void setBookingtbaleref(BookingTable bookingtbaleref) {
+		public void setBookingtbaleref(List<BookingTable> bookingtbaleref) {
 			this.bookingtbaleref = bookingtbaleref;
 		}
 
@@ -99,4 +104,5 @@ public class Customer {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-}
+		
+}      

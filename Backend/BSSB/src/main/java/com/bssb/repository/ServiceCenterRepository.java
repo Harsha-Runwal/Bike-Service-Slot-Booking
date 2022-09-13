@@ -13,7 +13,10 @@ import com.bssb.entity.ServiceCenter;
 @Repository
 public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,Integer>{
 
+	
+
 	ServiceCenter findByName(String Name);
+	ServiceCenter findByRegNo(int regNo);
 	
 	@Modifying
 	@Query("update ServiceCenter set capacity=:slots where registration_no=:regNo")

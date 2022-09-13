@@ -28,12 +28,7 @@ public class ServiceSlotInfoController {
 		return "successfully Added";
 	}
 	
-	@PutMapping("/changeNumberOfSlots/{regNo}/{newSlots}")
-	public String changeSlots(@PathVariable String date, @PathVariable int regNo,@PathVariable int newSlots)
-	{
-		 dao.changeSlots(regNo,newSlots);
-		 return "successfully changed";
-	}
+	
 	
 //	@DeleteMapping("/deleteSlots/{date}/{regNo}")
 //	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)

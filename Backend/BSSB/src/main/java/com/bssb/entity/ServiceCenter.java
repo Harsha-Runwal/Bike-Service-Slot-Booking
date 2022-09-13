@@ -34,8 +34,10 @@ public class ServiceCenter {
 	private String role;
 	
 	private int capacity;
+	@OneToMany(mappedBy="center",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	private List<ServiceSlotInfoTable> slotList;
 	
-	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.ALL})
+	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	private List<BookingTable> bookingtableref;
 	
 	public ServiceCenter() {
@@ -175,6 +177,16 @@ public class ServiceCenter {
 
 	public void setBookingtableref(List<BookingTable> bookingtableref) {
 		this.bookingtableref = bookingtableref;
+	}
+
+
+	public List<ServiceSlotInfoTable> getSlotList() {
+		return slotList;
+	}
+
+
+	public void setSlotList(List<ServiceSlotInfoTable> slotList) {
+		this.slotList = slotList;
 	}
 
 

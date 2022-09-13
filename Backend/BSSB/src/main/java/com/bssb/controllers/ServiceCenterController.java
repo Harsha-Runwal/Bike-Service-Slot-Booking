@@ -45,12 +45,12 @@ public class ServiceCenterController {
 		 return dao.getByName(name);
 	 }
 	 
-	 //ddmmyyyy
+	/* //ddmmyyyy
 	 @GetMapping("/getSlotDetails/{name}/{date}")
 	 public ServiceSlotInfoTable slotDetailsForDate(@PathVariable String name, @PathVariable String date)
 	 {
 		 ServiceCenter center = dao.getByName(name);
 		 return slotDao.slotDetailsOfCenter(date, center.getRegNo());
-	 }
+	 }   */
 	 
 }
