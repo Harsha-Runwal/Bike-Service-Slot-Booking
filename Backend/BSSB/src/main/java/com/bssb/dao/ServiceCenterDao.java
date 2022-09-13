@@ -3,6 +3,7 @@
 package com.bssb.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,5 +43,10 @@ public class ServiceCenterDao {
 		 return centerRepo.findByName(name);
 	  }
 	  
+	  public String updateCenterDetails(ServiceCenter serviceCenter)
+	  {
+		  Optional<ServiceCenter> center = centerRepo.findById(serviceCenter.getId());
+		  return "center details updated";
+	  }
 	  
 }

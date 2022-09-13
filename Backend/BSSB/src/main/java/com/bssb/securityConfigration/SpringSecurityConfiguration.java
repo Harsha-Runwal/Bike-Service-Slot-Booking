@@ -56,7 +56,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("CENTER")
 		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
 		// ADD URL HERE
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter").permitAll().anyRequest().authenticated()
+		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking").permitAll().anyRequest().authenticated()
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
 		and().addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

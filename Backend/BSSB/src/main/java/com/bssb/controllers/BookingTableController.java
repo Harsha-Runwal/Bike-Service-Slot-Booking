@@ -9,7 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,9 +55,30 @@ public class BookingTableController {
 		 return slotDao.getRemainingSlots(slot.getBookingId());
 	}*/
 	
-//	@GetMapping("/bookinghistory/{startdate}/{enddate}/{regNo}")
-//	public List<BookingTable> getHistory(@PathVariable String startdate, @PathVariable String enddate)
+	//all bookings for today
+	@GetMapping("/getTodaysBooking/{centerName}/{date}")
+	public List<BookingTable> getTodaysBooking(@PathVariable String centerName, @PathVariable String date)
+	{
+		return dao.getTodaysBooking(centerName,date);
+	}
+	
+	//get bookingHistory from bookingTable using 2 dates and service centerName
+	@GetMapping("/bookingHistory/{startdate}/{enddate}/{centerName}")
+	public List<BookingTable> getHistory(@PathVariable String startdate, @PathVariable String enddate, @PathVariable String centerName)
+	{
+		return dao.bookingHistory(startdate,enddate,centerName);
+	}
+	
+//	@PutMapping("/updateBooking")
+//	public BookingTable updateBooking(@RequestBody BookingTable updatedBooking)
 //	{
-//		
+//		return  dao.updateBooking(updatedBooking);
 //	}
+	
+	@DeleteMapping("/deleteBooking/{bookingId}")
+	public String deleteBooking(@PathVariable int bookingId)
+	{
+		return dao.deleteBooking(bookingId);
+	}
 }
+

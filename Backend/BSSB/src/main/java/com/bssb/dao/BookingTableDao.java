@@ -3,6 +3,8 @@ package com.bssb.dao;
 
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -57,5 +59,30 @@ public class BookingTableDao {
 		}
 		int bookingId = book.getbookingId();
 		return bookingId;
+	}
+	
+	public List<BookingTable> getTodaysBooking(String name ,String date)
+	{
+		ServiceCenter center = centerRepo.findByName(name);
+		return bookingRepo.getTodaysBooking(center.getId(),date);
+	}
+	
+	public List<BookingTable> bookingHistory(String startdate, String enddate, String name)
+	{
+		ServiceCenter center = centerRepo.findByName(name);
+		return bookingRepo.bookingHistory(center.getId(),startdate,enddate);
+	}
+	
+//	public BookingTable updateBooking(BookingTable updatedBooking)
+//	{
+//		int bookingId = updatedBooking.getbookingId();
+//		Optional<BookingTable> booking=bookingRepo.findById(bookingId);
+//		
+//	}
+	
+	public String deleteBooking(int bookingId)
+	{
+		bookingRepo.deleteById(bookingId);
+		return "deleted";
 	}
 }
