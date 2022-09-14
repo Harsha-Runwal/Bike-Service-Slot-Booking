@@ -41,6 +41,7 @@ public class BookingTable {
 	@Column
 	private String bookingDate;
 	
+	private String planName;
 
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE})
 	@JoinColumn(name = "CUSTOMER_ID")
@@ -137,6 +138,16 @@ public class BookingTable {
 	public void setBookingDate(String bookingDate) {
 		this.bookingDate = bookingDate;
 	}
+
+	public String getPlanName() {
+		return planName;
+	}
+
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
+
+	
 
 	
 	
