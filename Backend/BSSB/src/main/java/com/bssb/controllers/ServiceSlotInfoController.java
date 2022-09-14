@@ -31,7 +31,7 @@ public class ServiceSlotInfoController {
 		dao.addSlot(slot);
 		return "successfully Added";
 	}
-	@GetMapping("/getPlans/{regNo}")
+	@GetMapping("/getSlot/{regNo}")
    	public  List<ServiceSlotInfoTable> getSlot(@PathVariable int regNo)
    	{
    		return  dao.getRemaiangingSlot(regNo);
