@@ -37,7 +37,7 @@ public class BookingTableController {
 	private ServiceSlotInfoDao slotDao;
 	
 	
-	//will return bookingId, store it in slotUpdate json object. 
+	
 	@PostMapping("/newbooking")
 	public int addBooking(@RequestBody BookingTable bookingObject)
 	{

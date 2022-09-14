@@ -55,12 +55,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable()
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("CENTER")
 		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
-		// ADD URL HERE
-<<<<<<< HEAD
+	
+
 		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking").permitAll().anyRequest().authenticated()
-=======
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/slotmanagement/addSlots").permitAll().anyRequest().authenticated()
->>>>>>> 33351ab7f5dbf2a60ff4ba04f5accfa17054d299
+
+	
+
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
 		and().addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
