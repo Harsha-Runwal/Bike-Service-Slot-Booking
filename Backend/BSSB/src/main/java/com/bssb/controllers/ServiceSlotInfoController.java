@@ -28,7 +28,7 @@ public class ServiceSlotInfoController {
 		return "successfully Added";
 	}
 	
-	
+	//get remaining slot from regNo and date
 	
 //	@DeleteMapping("/deleteSlots/{date}/{regNo}")
 //	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)

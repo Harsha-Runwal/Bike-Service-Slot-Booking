@@ -61,24 +61,31 @@ public class BookingTableDao {
 		return bookingId;
 	}
 	
-	public List<BookingTable> getTodaysBooking(String name ,String date)
+	public List<BookingTable> getTodaysBooking(String email ,String date)
 	{
-		ServiceCenter center = centerRepo.findByName(name);
+		ServiceCenter center = centerRepo.findByEmail(email);
 		return bookingRepo.getTodaysBooking(center.getId(),date);
 	}
 	
-	public List<BookingTable> bookingHistory(String startdate, String enddate, String name)
+	public List<BookingTable> bookingHistory(String startdate, String enddate, String email)
 	{
-		ServiceCenter center = centerRepo.findByName(name);
+		ServiceCenter center = centerRepo.findByEmail(email);
 		return bookingRepo.bookingHistory(center.getId(),startdate,enddate);
 	}
 	
-//	public BookingTable updateBooking(BookingTable updatedBooking)
-//	{
-//		int bookingId = updatedBooking.getbookingId();
-//		Optional<BookingTable> booking=bookingRepo.findById(bookingId);
-//		
-//	}
+	public BookingTable updateBooking(BookingTable updatedBooking)
+	{
+		int bookingId = updatedBooking.getbookingId();
+		Optional<BookingTable> booking=bookingRepo.findById(bookingId);
+		booking.get().setBookingDate(updatedBooking.getBookingDate());
+		booking.get().setmodelNo(updatedBooking.getmodelNo());
+		booking.get().setstatus(updatedBooking.getstatus());
+		booking.get().settotalCost(updatedBooking.gettotalCost());
+		booking.get().setvehicleRegNo(updatedBooking.getvehicleRegNo());
+		
+		BookingTable upBooking = bookingRepo.save(booking.get());
+		return upBooking;
+	}
 	
 	public String deleteBooking(int bookingId)
 	{

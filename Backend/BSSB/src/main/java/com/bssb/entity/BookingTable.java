@@ -97,7 +97,7 @@ public class BookingTable {
 //	public void setSlotId(ServiceSlotInfoTable slotId) {
 //		this.slotId = slotId;
 //	}
-	public boolean isstatus() {
+	public boolean getstatus() {
 		return status;
 	}
 
