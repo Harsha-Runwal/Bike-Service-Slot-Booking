@@ -40,13 +40,17 @@ public class ServiceCenter {
 	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	private List<BookingTable> bookingtableref;
 	
+	@OneToMany(mappedBy="serviceCenterRef",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	 private List<Plan> plans;
+	
+	
 	public ServiceCenter() {
 		
 	}
 
 
 	public ServiceCenter( String name, String city, String address, String email, String contactNo,
-			String password, int pincode, int regNo, int capacity) {
+			String password, int pincode, int regNo, int capacity,List<Plan> plans) {
 		
 		this.name = name;
 		this.city = city;
@@ -57,6 +61,7 @@ public class ServiceCenter {
 		this.pincode = pincode;
 		this.regNo = regNo;
 		this.capacity = capacity;
+		this.plans=plans;
 	}
 
 
@@ -187,6 +192,16 @@ public class ServiceCenter {
 
 	public void setSlotList(List<ServiceSlotInfoTable> slotList) {
 		this.slotList = slotList;
+	}
+
+
+	public List<Plan> getPlans() {
+		return plans;
+	}
+
+
+	public void setPlans(List<Plan> plans) {
+		this.plans = plans;
 	}
 
 
