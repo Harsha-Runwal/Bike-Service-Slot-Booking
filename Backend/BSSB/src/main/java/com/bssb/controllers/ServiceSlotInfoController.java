@@ -1,6 +1,7 @@
 package com.bssb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.entity.ServiceSlotInfoTable;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "slotmanagement")
 public class ServiceSlotInfoController {

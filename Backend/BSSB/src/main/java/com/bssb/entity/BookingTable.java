@@ -42,7 +42,7 @@ public class BookingTable {
 	private String bookingDate;
 	
 
-	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE})
+	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customer;
 
@@ -51,7 +51,7 @@ public class BookingTable {
 //	private ServiceSlotInfoTable slotId;
 	
 
-	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH})
+	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
 	@JoinColumn(name="SERVICE_CENTER_ID")
 	private ServiceCenter serviceCenterref;
 	

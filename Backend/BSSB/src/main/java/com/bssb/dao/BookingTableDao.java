@@ -2,6 +2,7 @@ package com.bssb.dao;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -61,16 +62,25 @@ public class BookingTableDao {
 		return bookingId;
 	}
 	
-	public List<BookingTable> getTodaysBooking(String name ,String date)
+	public List<BookingTable> getTodaysBooking(String email ,String date)
 	{
-		ServiceCenter center = centerRepo.findByName(name);
-		return bookingRepo.getTodaysBooking(center.getId(),date);
+		System.out.println(email+" "+date);
+		ServiceCenter center = centerRepo.findByEmail(email);
+		System.out.println(center.getId());
+		List<BookingTable> list2=new ArrayList<>();
+		BookingTable b1=new BookingTable();
+		b1.setmodelNo("hjqwhdk");
+		list2.add(b1);
+		
+		List<BookingTable> list= bookingRepo.getTodaysBooking(center,date);
+		System.out.println(list);
+		return list;
 	}
 	
-	public List<BookingTable> bookingHistory(String startdate, String enddate, String name)
+	public List<BookingTable> bookingHistory(String startdate, String enddate, String email)
 	{
-		ServiceCenter center = centerRepo.findByName(name);
-		return bookingRepo.bookingHistory(center.getId(),startdate,enddate);
+		ServiceCenter center = centerRepo.findByEmail(email);
+		return bookingRepo.bookingHistory(center,startdate,enddate);
 	}
 	
 //	public BookingTable updateBooking(BookingTable updatedBooking)
