@@ -41,13 +41,12 @@ public class BookingTableController {
 	private ServiceSlotInfoDao slotDao;
 	
 	
-	//will return bookingId, store it in slotUpdate json object. 
+	
 	@PostMapping("/newbooking")
 	public int addBooking(@RequestBody BookingTable bookingObject)
 	{
 		//String jwtToken =  authObjet.extractJwtFromRequest(request);
 		//UserDetails userDetails = new User(jwtTokenUtil.getUsernameFromToken(jwtToken)
-		
 		return dao.addBookingDetails(bookingObject);
 	}
 	
@@ -60,25 +59,38 @@ public class BookingTableController {
 	}*/
 	
 	//all bookings for today
+<<<<<<< HEAD
 	@GetMapping("/getTodaysBooking/{email}/{date}")
 	public List<BookingTable> getTodaysBooking(@PathVariable String email, @PathVariable String date)
 	{
 		
+=======
+	// get using email email
+	@GetMapping("/getTodaysBooking/{email}/{date}")
+	public List<BookingTable> getTodaysBooking(@PathVariable String email, @PathVariable String date)
+	{
+>>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
 		return dao.getTodaysBooking(email,date);
 	}
 	
+	//email
 	//get bookingHistory from bookingTable using 2 dates and service centerName
 	@GetMapping("/bookingHistory/{startdate}/{enddate}/{email}")
 	public List<BookingTable> getHistory(@PathVariable String startdate, @PathVariable String enddate, @PathVariable String email)
 	{
 		return dao.bookingHistory(startdate,enddate,email);
+<<<<<<< HEAD
+=======
 	}
 	
-//	@PutMapping("/updateBooking")
-//	public BookingTable updateBooking(@RequestBody BookingTable updatedBooking)
-//	{
-//		return  dao.updateBooking(updatedBooking);
-//	}
+	
+	@PutMapping("/updateBooking")
+	public BookingTable updateBooking(@RequestBody BookingTable updatedBooking)
+	{
+		return  dao.updateBooking(updatedBooking);
+>>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
+	}
+	
 	
 	@DeleteMapping("/deleteBooking/{bookingId}")
 	public String deleteBooking(@PathVariable int bookingId)

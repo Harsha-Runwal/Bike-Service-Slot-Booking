@@ -55,11 +55,19 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable()
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("CENTER")
 		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
+<<<<<<< HEAD
 		// ADD URL HERE
 
 		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/slotmanagement/addSlots","/booking/newbooking","/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}").permitAll().anyRequest().authenticated()
 
 		
+=======
+	
+
+		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add").permitAll().anyRequest().authenticated()
+
+	
+>>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
 
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).

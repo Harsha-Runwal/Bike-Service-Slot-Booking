@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bssb.dao.ServiceCenterDao;
 import com.bssb.dao.ServiceSlotInfoDao;
+import com.bssb.dtos.ServiceCenterDto;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
 
@@ -36,14 +37,14 @@ public class ServiceCenterController {
 	}
 	 
 	 @GetMapping("/getAll")
-	 public List<ServiceCenter> serviceCenter()
+	 public List<ServiceCenterDto> serviceCenter()
 	 {
-		 ArrayList<ServiceCenter> list =  (ArrayList<ServiceCenter>) dao.GetAll();
-		 return list;
+		  
+		 return dao.GetAll();
 	 }
 	 
 	 @GetMapping("/getCenterByName/{name}")
-	 public ServiceCenter center(@PathVariable String name)
+	 public ServiceCenterDto center(@PathVariable String name)
 	 {
 		 return dao.getByName(name);
 	 }

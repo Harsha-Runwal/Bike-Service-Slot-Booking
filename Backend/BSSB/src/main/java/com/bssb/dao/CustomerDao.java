@@ -1,6 +1,8 @@
 package com.bssb.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.bssb.entity.Customer;
@@ -20,8 +22,20 @@ public class CustomerDao {
 	      }
 	      
 	    
-	       public Customer registerCustomer(Customer customer)
+	       public ResponseEntity<?> registerCustomer(Customer customer)
 	       {
-	    	    return customerRepo.save(customer);
+	    	   String email=customer.getEmail();
+	    	   Customer user=customerRepo.findByEmail(email);
+	    	 
+	    	   if(user!=null)
+	    	   {
+	    	   customerRepo.save(customer);
+	    	   return new ResponseEntity<String>("successfully registerd",HttpStatus.OK);
+	    	   }
+	    	   else
+	    	   {
+	    		   return new ResponseEntity<String>("user alredy present",HttpStatus.NOT_FOUND);
+	    	   }
+	       
 	       }
 }

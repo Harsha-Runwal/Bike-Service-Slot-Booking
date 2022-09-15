@@ -3,7 +3,11 @@ package com.bssb.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+import org.springframework.http.ResponseEntity;
+>>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +25,10 @@ public class CustomerController {
 	    private CustomerDao dao;
 	    
 	    @PostMapping("/register")
-	    public Customer register(@RequestBody Customer customer)
+	    public ResponseEntity <?> register(@RequestBody Customer customer)
 	    {
+	    	
+	    	 
 	    	return dao.registerCustomer(customer);
 	    }
 	    
