@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.bssb.dtos.ServiceCenterDto;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path="/center")
 public class ServiceCenterController {
