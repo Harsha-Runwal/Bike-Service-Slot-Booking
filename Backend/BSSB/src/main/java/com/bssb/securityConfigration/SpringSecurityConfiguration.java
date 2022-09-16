@@ -57,7 +57,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
 	
 
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add").permitAll().anyRequest().authenticated()
+		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add","/plan/getPlans/{regNo}","/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter").permitAll().anyRequest().authenticated()
 
 	
 

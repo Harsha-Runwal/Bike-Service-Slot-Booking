@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bssb.entity.Plan;
 
+
 @Repository
 public interface PlanRepository extends JpaRepository<Plan,Integer> {
 	

@@ -1,8 +1,5 @@
 package com.bssb.dao;
 
-
-
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.bssb.entity.BookingTable;
 import com.bssb.entity.Customer;
 import com.bssb.entity.ServiceCenter;
-import com.bssb.entity.ServiceSlotInfoTable;
 import com.bssb.repository.BookingTableRepository;
 import com.bssb.repository.CustomerRepository;
 import com.bssb.repository.ServiceCenterRepository;

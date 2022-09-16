@@ -30,19 +30,15 @@ public class ServiceSlotInfoController {
 	{
 		dao.addSlot(slot);
 		return "successfully Added";
-	}
-<<<<<<< HEAD
-	
+	}	
 	//get remaining slot from regNo and date
-=======
+
 	@GetMapping("/getSlot/{regNo}")
    	public  List<ServiceSlotInfoTable> getSlot(@PathVariable int regNo)
    	{
    		return  dao.getRemaiangingSlot(regNo);
    	}
-	
->>>>>>> b3c0763f339d47916cc8cb02ba70fecfc8ef3254
-	
+		
 //	@DeleteMapping("/deleteSlots/{date}/{regNo}")
 //	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)
 //	{

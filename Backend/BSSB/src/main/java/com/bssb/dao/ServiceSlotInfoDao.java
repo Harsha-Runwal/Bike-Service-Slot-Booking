@@ -44,12 +44,11 @@ public class ServiceSlotInfoDao {
 
 	public void addSlot(ServiceSlotInfoTable slot) {
 		
-		  int registrationNo=slot.getCenter().getRegNo();
-		  ServiceCenter center=centerRepo.findByRegNo(registrationNo);
+		String email=slot.getCenter().getEmail();
+		  ServiceCenter center=centerRepo.findByEmail(email);
 		  slot.setCenter(center);
 		 slot.setRemainingSlot(slot.getTotalSlot());
 		 slotRepo.save(slot);
-		   
 	}
 	
 	
