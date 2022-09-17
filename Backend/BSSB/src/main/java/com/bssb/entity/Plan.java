@@ -24,7 +24,7 @@ public class Plan {
 	private int id;
 	private String name;
 	private String description;
-	private String image;
+	private String image; 
 	private float cost;
 	
 	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})

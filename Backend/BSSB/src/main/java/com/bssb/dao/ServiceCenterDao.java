@@ -64,9 +64,15 @@ public class ServiceCenterDao {
 		    return centerDto;
 	  }
 	  
+	  //service center can update capacity, contact details, email,name
 	  public String updateCenterDetails(ServiceCenter serviceCenter)
 	  {
 		  Optional<ServiceCenter> center = centerRepo.findById(serviceCenter.getId());
+		  center.get().setCapacity(serviceCenter.getCapacity());
+		  center.get().setContactNo(serviceCenter.getContactNo());
+		  center.get().setEmail(serviceCenter.getEmail());
+		  center.get().setName(serviceCenter.getName());
+		  centerRepo.save(center.get());
 		  return "center details updated";
 	  }
 	  
