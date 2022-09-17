@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,7 @@ import com.bssb.repository.CustomerRepository;
 import com.bssb.repository.ServiceCenterRepository;
 import com.bssb.securityConfigration.CustomJwtAuthenticationFilter;
 import com.bssb.securityConfigration.JwtUtil;
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/booking")
 public class BookingTableController {
@@ -39,7 +42,7 @@ public class BookingTableController {
 	
 	
 	@PostMapping("/newbooking")
-	public int addBooking(@RequestBody BookingTable bookingObject)
+	public ResponseEntity<String> addBooking(@RequestBody BookingTable bookingObject)
 	{
 		//String jwtToken =  authObjet.extractJwtFromRequest(request);
 		//UserDetails userDetails = new User(jwtTokenUtil.getUsernameFromToken(jwtToken)

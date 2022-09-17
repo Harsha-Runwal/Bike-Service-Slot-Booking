@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 
 @Entity
 @Table(name="CUSTOMER_DETAILS")
@@ -33,6 +36,8 @@ public class Customer {
 		
 		@Column(name="PASSWORD")
 		private String password;
+		@JsonInclude(JsonInclude.Include.NON_NULL)
+		@JsonIgnore
 		@OneToMany(mappedBy = "customer",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.REFRESH })
 		private List <BookingTable> bookingtbaleref;
 		 
@@ -64,7 +69,7 @@ public class Customer {
 		}
 
 		
-
+		@JsonIgnore
 		public List<BookingTable> getBookingtbaleref() {
 			return bookingtbaleref;
 		}
@@ -80,6 +85,8 @@ public class Customer {
 		public String getLastName() {
 			return LastName;
 		}
+		
+	
 		public String getEmail() {
 			return email;
 		}
@@ -104,5 +111,14 @@ public class Customer {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+
+		@Override
+		public String toString() {
+			return "Customer [id=" + id + ", firstName=" + firstName + ", LastName=" + LastName + ", email=" + email
+					+ ", mobileNo=" + mobileNo + ", role=" + role + ", password=" + password + ", bookingtbaleref="
+					+ bookingtbaleref + "]";
+		}
+		
+		
 		
 }      

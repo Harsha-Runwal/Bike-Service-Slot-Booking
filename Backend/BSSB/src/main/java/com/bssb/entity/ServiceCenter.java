@@ -12,10 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="SERVICE_CENTER_DETAILS")
 public class ServiceCenter {
 	
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	@Column(name="SERVICE_CENTER_ID")
@@ -34,12 +37,15 @@ public class ServiceCenter {
 	private String role;
 	
 	private int capacity;
+	@JsonIgnore
 	@OneToMany(mappedBy="center",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	private List<ServiceSlotInfoTable> slotList;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	private List<BookingTable> bookingtableref;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="serviceCenterRef",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	 private List<Plan> plans;
 	
@@ -174,7 +180,7 @@ public class ServiceCenter {
 		this.capacity = capacity;
 	}
 
-
+	@JsonIgnore
 	public List<BookingTable> getBookingtableref() {
 		return bookingtableref;
 	}

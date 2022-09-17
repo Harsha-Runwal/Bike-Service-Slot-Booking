@@ -17,7 +17,7 @@ public class ServiceSlotInfoDao {
 
 	private ServiceSlotInfoRepository slotRepo;
 
-	private ServiceCenterRepository serviceRepo;
+	
 	@Autowired
 	private ServiceCenterRepository centerRepo;
 	
@@ -58,5 +58,24 @@ public class ServiceSlotInfoDao {
 		  ServiceCenter center=centerRepo.findByRegNo(RegNo);
 		  return center.getSlotList();
 	  }
+	
+	  //Akshay  
+		/*
+		 * public int getRemaiangingSlot(int RegNo,String date) {
+		 * System.out.println(RegNo+" "+date); ServiceCenter
+		 * center=centerRepo.findByRegNo(RegNo); int id=center.getId(); return
+		 * slotRepo.getRemainingSlots(id, date); }
+		 */
+	  
+	  public int slotDetailsOfCenter(String date, int regNo)
+		{
+		  ServiceCenter center=centerRepo.findByRegNo(regNo);
+		  int id=center.getId();
+		  ServiceSlotInfoTable ss= slotRepo.getByDateAndRegNo(date,id);
+		  
+		  return ss.getRemainingSlot();
+		}
+	  
+	  
 	
 }

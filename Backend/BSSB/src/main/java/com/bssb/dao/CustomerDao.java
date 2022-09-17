@@ -25,9 +25,10 @@ public class CustomerDao {
 	       public ResponseEntity<?> registerCustomer(Customer customer)
 	       {
 	    	   String email=customer.getEmail();
-	    	   Customer user=customerRepo.findByEmail(email);
+	    	 Customer user=customerRepo.findByEmail(email);
+	    	 System.out.println(user);
 	    	 
-	    	   if(user!=null)
+	    	  if(user==null)
 	    	   {
 	    	   customerRepo.save(customer);
 	    	   return new ResponseEntity<String>("successfully registerd",HttpStatus.OK);

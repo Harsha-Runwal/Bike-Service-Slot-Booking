@@ -46,4 +46,8 @@ public interface ServiceSlotInfoRepository extends JpaRepository<ServiceSlotInfo
 	@Modifying
 	@Query("delete from ServiceSlotInfoTable where date = :date and regNo = :regNo")
 	void deleteSlot(@Param("date") String date,@Param("regNo") int regNo);*/
+	
+//Akshay
+	 @Query("select c from ServiceSlotInfoTable c where date = :date and service_center_id = :id")
+		ServiceSlotInfoTable getByDateAndRegNo(@Param("date") String date,@Param("id") int id);
 }

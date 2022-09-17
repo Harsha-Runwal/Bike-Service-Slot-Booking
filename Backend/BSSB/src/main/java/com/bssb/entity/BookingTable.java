@@ -19,6 +19,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table
 public class BookingTable {
@@ -43,6 +52,9 @@ public class BookingTable {
 	
 	private String planName;
 
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonSetter
+	@JsonIgnore
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE})
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customer;
@@ -51,7 +63,8 @@ public class BookingTable {
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private ServiceSlotInfoTable slotId;
 	
-
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonIgnore
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH})
 	@JoinColumn(name="SERVICE_CENTER_ID")
 	private ServiceCenter serviceCenterref;
@@ -60,6 +73,7 @@ public class BookingTable {
 		return bookingId;
 	}
 
+	
 	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, boolean status,
 			float totalCost, Customer customer,ServiceCenter serviceCenterref,String bookingDate) {
 		super();
@@ -113,20 +127,23 @@ public class BookingTable {
 	public void settotalCost(float totalCost) {
 		this.totalCost = totalCost;
 	}
-
+	
+	@JsonIgnore
 	public ServiceCenter getServiceCenterref() {
 		return serviceCenterref;
 	}
 
+	@JsonSetter
 	public void setServiceCenterref(ServiceCenter serviceCenterref) {
 		this.serviceCenterref = serviceCenterref;
 	}
 	
-
+	@JsonIgnore
 	public Customer getCustomer() {
 		return customer;
 	}
 
+	@JsonSetter
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}

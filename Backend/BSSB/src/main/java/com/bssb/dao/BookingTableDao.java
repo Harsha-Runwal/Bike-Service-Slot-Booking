@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+
+import com.bssb.emailsender.EmailCustomer;
 import com.bssb.entity.BookingTable;
 import com.bssb.entity.Customer;
 import com.bssb.entity.ServiceCenter;
@@ -27,6 +31,10 @@ public class BookingTableDao {
 	@Autowired
 	private ServiceCenterRepository centerRepo;
 	
+	@Autowired
+	private  EmailCustomer emailCustomer;
+
+	
 	public BookingTableDao()
 	{
 		
@@ -39,10 +47,14 @@ public class BookingTableDao {
 		this.bookingRepo = bookingRepo;
 	}
 	
-	public int addBookingDetails(BookingTable bookingObject)
+	public ResponseEntity<String> addBookingDetails(BookingTable bookingObject)
 	{
+		System.out.println(bookingObject);
 		String customerEmail=bookingObject.getCustomer().getEmail();
+		System.out.println(customerEmail);
 		 Customer customer=customerRepo.findByEmail(customerEmail);
+		 System.out.println(customer);
+		 
 		 System.out.println(customer.getEmail()+"cusomer name"+customer.getFirstName());
 		 bookingObject.setCustomer(customer);
 		 int registrtaionNumber=bookingObject.getServiceCenterref().getRegNo();
@@ -56,14 +68,18 @@ public class BookingTableDao {
 			
 			 String bookingDate=book.getBookingDate();
 			slotRepo.upDateSlot(center, bookingDate);
+			emailCustomer.sendMail(book);
+			return new  ResponseEntity<String>("okk",HttpStatus.OK);
+
 		}
 		int bookingId = book.getbookingId();
-		return bookingId;
+		return new ResponseEntity<String>("okk",HttpStatus.BAD_REQUEST);
 	}
 	
 	public List<BookingTable> getTodaysBooking(String email ,String date)
 	{
 		ServiceCenter center = centerRepo.findByEmail(email);
+		System.out.println(bookingRepo.getTodaysBooking(center.getId(),date));
 		return bookingRepo.getTodaysBooking(center.getId(),date);
 	}
 	
