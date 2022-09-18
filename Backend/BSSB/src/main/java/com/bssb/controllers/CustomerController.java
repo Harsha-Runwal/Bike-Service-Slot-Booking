@@ -3,16 +3,17 @@ package com.bssb.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
+
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
->>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
+
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,15 @@ public class CustomerController {
 	    {
 	    	return dao.registerCustomer(customer);
 	    }
-	    
+	    @PostMapping("/forgetPaswword/{email}/{securityAnswer}")
+	    public ResponseEntity<?> validateAnswer(@PathVariable String email,@PathVariable String securityAnswer)
+	    {
+	    	return dao.validateSecurityAnswer(email, securityAnswer);
+	    }
+	    @PostMapping("setpassword/{email}/{password}")
+	    public ResponseEntity<?> ResetPassword(@PathVariable String email,@PathVariable String password)
+	    {
+	    	return dao.ResetUserPassword(email, password);
+	    }
 	    
 }

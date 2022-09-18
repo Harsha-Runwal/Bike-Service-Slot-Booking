@@ -33,7 +33,8 @@ public class Customer {
 		private String mobileNo;
 		@Column
 		private String role;
-		
+		@Column(name="security_question")
+		private String securityAnswer;
 		@Column(name="PASSWORD")
 		private String password;
 		@JsonInclude(JsonInclude.Include.NON_NULL)
@@ -110,6 +111,17 @@ public class Customer {
 		}
 		public void setPassword(String password) {
 			this.password = password;
+		}
+		
+
+	
+
+		public String getSecurityAnswer() {
+			return securityAnswer;
+		}
+
+		public void setSecurityAnswer(String securityAnswer) {
+			this.securityAnswer = securityAnswer;
 		}
 
 		@Override

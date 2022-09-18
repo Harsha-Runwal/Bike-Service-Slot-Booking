@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.dtos.PlanDto;
 import com.bssb.entity.ServiceSlotInfoTable;
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
+
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "slotmanagement")
@@ -35,24 +35,12 @@ public class ServiceSlotInfoController {
 	{
 		dao.addSlot(slot);
 		return "successfully Added";
-<<<<<<< HEAD
+
 	}
 
 	
-	//get remaining slot from regNo and date
-=======
-	}	
-	//get remaining slot from regNo and date
 
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
-	@GetMapping("/getSlot/{regNo}")
-   	public  List<ServiceSlotInfoTable> getSlot(@PathVariable int regNo)
-   	{
-   		return  dao.getRemaiangingSlot(regNo);
-   	}
-<<<<<<< HEAD
 	
-//AKSHAY
 	@GetMapping("/getSlots/{regNo}/{date}")
     public int getSlot(@PathVariable int regNo,@PathVariable String date)
     {
@@ -60,10 +48,7 @@ public class ServiceSlotInfoController {
      return  dao.slotDetailsOfCenter(date, regNo);
     }
 	
-=======
-		
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
-//	@DeleteMapping("/deleteSlots/{date}/{regNo}")
+
 //	public String deleteSlot(@PathVariable String date, @PathVariable int regNo)
 //	{
 //		dao.deleteSlot(date, regNo);

@@ -55,25 +55,20 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable()
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("CENTER")
 		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
-<<<<<<< HEAD
+
 		// ADD URL HERE
 
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/slotmanagement/addSlots","/booking/newbooking","/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}").permitAll().anyRequest().authenticated()
+	
 
 		
-=======
-	
 
-<<<<<<< HEAD
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add",
+		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add","/customer/setpassword/{email}/{password}","/customer/forgetPaswword/{email}/{securityAnswer}",
 				"/plan/getPlans/{regNo}","/center/getAll","/center/getAllNames","/center/getCenterByName/{name}",
-				"/slotmanagement/getSlots/{regNo}/{date}","/booking/newbooking","/slotmanagement/getSlot/{regNo}","/booking/getTodaysBooking/{email}/{date}").permitAll().anyRequest().authenticated()
-=======
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add","/plan/getPlans/{regNo}","/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter").permitAll().anyRequest().authenticated()
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+				"/slotmanagement/getSlots/{regNo}/{date}","/booking/newbooking","/slotmanagement/getSlot/{regNo}","/booking/getTodaysBooking/{email}/{date}","/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add","/plan/getPlans/{regNo}","/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter").permitAll().anyRequest().authenticated()
 
-	
->>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
+		
+
+
 
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).

@@ -11,21 +11,16 @@ import com.bssb.entity.ServiceCenter;
 
 @Repository
 public interface BookingTableRepository extends JpaRepository<BookingTable, Integer> {
-<<<<<<< HEAD
     //get todays booking details of center
 	@Query("select c from BookingTable c where serviceCenterref.id=:centerId and bookingDate=:date")
 	List<BookingTable> getTodaysBooking(@Param("centerId") int centerId, @Param("date") String date);
-=======
+
     
 	
-	//get todays booking details of center
-	@Query("select c from BookingTable c where c.serviceCenterref=:serviceCenterref and c.bookingDate=:bookingDate")
-	List<BookingTable> getTodaysBooking(@Param("serviceCenterref") ServiceCenter serviceCenterref, @Param("bookingDate") String bookingDate);
 	
-	
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
 	
 	//get booking history
-	@Query("select c from BookingTable c where c.serviceCenterref=:centerId and c.bookingDate in(:startdate,:enddate)")
-	List<BookingTable> bookingHistory(@Param("centerId") ServiceCenter centerId, @Param("startdate") String startdate, @Param("enddate") String enddate);
+	@Query("select c from BookingTable c where c.serviceCenterref.id=:centerId and c.bookingDate in(:startdate,:enddate)")
+	List<BookingTable> bookingHistory(@Param("centerId") int centerId, @Param("startdate") String startdate, @Param("enddate") String enddate);
 }

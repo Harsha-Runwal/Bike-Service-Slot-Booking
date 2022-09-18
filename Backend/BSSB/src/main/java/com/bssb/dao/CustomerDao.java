@@ -39,4 +39,33 @@ public class CustomerDao {
 	    	   }
 	       
 	       }
+	       
+	       public ResponseEntity<?> validateSecurityAnswer(String email,String answer)
+	       {
+	    	   Customer customer=customerRepo.findByEmail(email);
+	    	    if(customer!=null)
+	    	    {
+	    	    	String customerOriginalAns=customer.getSecurityAnswer();
+	    	    	if( customerOriginalAns.equals(answer))
+	    	    	{
+	    	    		System.out.println("send ans"+answer+"databse ans"+customerOriginalAns);
+	    	    		return new ResponseEntity<>(HttpStatus.OK);
+	    	    	}
+	    	    } 
+	    	    		return new ResponseEntity<>("inValid ans",HttpStatus.UNAUTHORIZED);
+	    	    		
+	    	 
+	       }
+	       public ResponseEntity<?> ResetUserPassword(String email,String password)
+	       {
+	    	   Customer customer=customerRepo.findByEmail(email);
+	    	    customer.setPassword(password);
+	    	    customerRepo.save(customer);
+	    	   
+	    	    return new ResponseEntity<>(HttpStatus.OK);
+	    	    
+	    	    		
+	    	    		
+	    	 
+	       }
 }

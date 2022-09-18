@@ -19,10 +19,9 @@ import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.dtos.ServiceCenterDto;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
+
 @CrossOrigin
 @RestController
 @RequestMapping(path="/center")
