@@ -28,6 +28,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	@Autowired
 	 private ServiceCenterDetailsService serviceCenter;
+	@Autowired
+	private AdminDetailsService admin;
 	
 	
 	@Bean
@@ -40,6 +42,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 		auth.userDetailsService(serviceCenter).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(admin).passwordEncoder(passwordEncoder());
 	}
 	
 	
@@ -54,26 +57,16 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		.authorizeRequests().antMatchers("/helloadmin").hasRole("CENTER")
-		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER")
-<<<<<<< HEAD
+		.antMatchers("/booking/newbooking").hasAnyRole("CUSTOMER","CENTER","ADMIN")
+
 		// ADD URL HERE
-
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/slotmanagement/addSlots","/booking/newbooking","/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}").permitAll().anyRequest().authenticated()
-
-		
-=======
-	
-
-<<<<<<< HEAD
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add",
-				"/plan/getPlans/{regNo}","/center/getAll","/center/getAllNames","/center/getCenterByName/{name}",
-				"/slotmanagement/getSlots/{regNo}/{date}","/booking/newbooking","/slotmanagement/getSlot/{regNo}","/booking/getTodaysBooking/{email}/{date}").permitAll().anyRequest().authenticated()
-=======
-		.antMatchers("/authenticateUser", "/customer/register","/authenticatecenter","/booking/newbooking","/plan/add","/plan/getPlans/{regNo}","/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter").permitAll().anyRequest().authenticated()
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+		.antMatchers("/authenticateUser","/center/register", "/customer/register","/authenticatecenter","/authenticateadmin","/booking/newbooking","/plan/add",
+				"/plan/getPlans/{regNo}","/center/getAll","/center/getAllNames","/center/getCenterByName/{name}","/center/getCenterByCity/{city}",
+				"/slotmanagement/getSlots/{regNo}/{date}","/booking/newbooking","/slotmanagement/getSlot/{regNo}","/booking/getTodaysBooking/{email}/{date}","/center//register","/center/getCities",
+				"/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter","/slotmanagement/addSlots","/booking/getBookingId",
+				"/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}").permitAll().anyRequest().authenticated()
 
 	
->>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
 
 		.and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).
 		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).

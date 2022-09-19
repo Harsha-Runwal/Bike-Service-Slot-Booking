@@ -3,6 +3,7 @@
 package com.bssb.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,6 +75,26 @@ public class ServiceCenterDao {
 		  center.get().setName(serviceCenter.getName());
 		  centerRepo.save(center.get());
 		  return "center details updated";
+	  }
+	  
+	  
+	  //AKhsay
+	  public ArrayList<String> getCities()
+	  {
+		  return centerRepo.getCitiesAll();
+	  }
+	  public ArrayList<String> getCenters(String city)
+	  {
+		  ArrayList<String> nameList=new ArrayList<String>();
+		  ArrayList<ServiceCenter> serCenter=centerRepo.getCityCenters(city);
+		  for(int i=0;i<serCenter.size();i++)
+		  {
+			  if(serCenter.get(i).getCity().contains(city))
+					  {
+				  			nameList.add(serCenter.get(i).getName());
+					  }
+		  }
+		  return nameList;
 	  }
 	  
 }

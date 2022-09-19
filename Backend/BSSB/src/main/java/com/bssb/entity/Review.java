@@ -23,7 +23,8 @@ public class Review {
 	@Column
 	private String comment;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE}
+)
 	@JoinColumn(name = "BOOKING_ID")
 	private BookingTable bookingId;
 	

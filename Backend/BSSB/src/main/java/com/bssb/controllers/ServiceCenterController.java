@@ -19,10 +19,7 @@ import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.dtos.ServiceCenterDto;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
 @CrossOrigin
 @RestController
 @RequestMapping(path="/center")
@@ -64,5 +61,22 @@ public class ServiceCenterController {
 		 ServiceCenter center = dao.getByName(name);
 		 return slotDao.slotDetailsOfCenter(date, center.getRegNo());
 	 }   */
+	 
+	 
+	 //Akshay
+	 @GetMapping("/getCities")
+	 public ArrayList<String> getAllCities()
+	 {
+		 return dao.getCities();
+	 }
+	 
+	 @GetMapping("/getCenterByCity/{city}")
+	 public ArrayList<String> getCenterByCity(@PathVariable String city)
+	 {
+		 return dao.getCenters(city);
+	 }
+	 
+	 
+	 
 	 
 }

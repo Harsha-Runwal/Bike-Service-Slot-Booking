@@ -8,16 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="ADMIN")
 public class Admin {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ADMIN_ID")
 	private int id;
 	@Column
-	private String Email;
+	private String email;
 	@Column
 	private String password;
+	@Column
+	private String role;
 	
 	public Admin()
 	{
@@ -26,8 +29,16 @@ public class Admin {
 
 	public Admin(String email, String password) {
 		super();
-		Email = email;
+		email = email;
 		this.password = password;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public int getId() {
@@ -35,11 +46,11 @@ public class Admin {
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		email = email;
 	}
 
 	public String getPassword() {

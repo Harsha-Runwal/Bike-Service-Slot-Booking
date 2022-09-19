@@ -29,11 +29,7 @@ import com.bssb.repository.CustomerRepository;
 import com.bssb.repository.ServiceCenterRepository;
 import com.bssb.securityConfigration.CustomJwtAuthenticationFilter;
 import com.bssb.securityConfigration.JwtUtil;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/booking")
@@ -63,17 +59,15 @@ public class BookingTableController {
 	}*/
 	
 	//all bookings for today
-<<<<<<< HEAD
-	@GetMapping("/getTodaysBooking/{email}/{date}")
-	public List<BookingTable> getTodaysBooking(@PathVariable String email, @PathVariable String date)
-	{
+
+
 		
-=======
+
 	// get using email email
 	@GetMapping("/getTodaysBooking/{email}/{date}")
 	public List<BookingTable> getTodaysBooking(@PathVariable String email, @PathVariable String date)
 	{
->>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
+
 		return dao.getTodaysBooking(email,date);
 	}
 	
@@ -83,8 +77,8 @@ public class BookingTableController {
 	public List<BookingTable> getHistory(@PathVariable String startdate, @PathVariable String enddate, @PathVariable String email)
 	{
 		return dao.bookingHistory(startdate,enddate,email);
-<<<<<<< HEAD
-=======
+
+
 	}
 	
 	
@@ -92,7 +86,7 @@ public class BookingTableController {
 	public BookingTable updateBooking(@RequestBody BookingTable updatedBooking)
 	{
 		return  dao.updateBooking(updatedBooking);
->>>>>>> c0eae0ca1a201d9c04be18390e4312546d842267
+
 	}
 	
 	
@@ -102,5 +96,8 @@ public class BookingTableController {
 		System.out.println(bookingId);
 		return dao.deleteBooking(bookingId);
 	}
+	
+	
+
 }
 

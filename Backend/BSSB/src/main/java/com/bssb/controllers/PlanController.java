@@ -7,13 +7,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,12 +25,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bssb.dao.PlanDao;
 import com.bssb.dtos.PlanDto;
 import com.bssb.entity.Plan;
-<<<<<<< HEAD
-@CrossOrigin
-=======
+
+
 import com.bssb.imageControl.FileService;
 
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
+
+@CrossOrigin
 @RestController
 @RequestMapping("/plan")
 public class PlanController {

@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @Entity
 @Table(name="SERVICE_CENTER_DETAILS")
@@ -160,12 +161,12 @@ public class ServiceCenter {
 		this.pincode = pincode;
 	}
 
-
+	@JsonIgnore
 	public int getRegNo() {
 		return regNo;
 	}
 
-
+	@JsonSetter
 	public void setRegNo(int regNo) {
 		this.regNo = regNo;
 	}

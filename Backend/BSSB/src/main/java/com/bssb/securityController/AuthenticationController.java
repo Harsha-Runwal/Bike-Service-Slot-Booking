@@ -27,7 +27,9 @@ public class AuthenticationController {
 	@Autowired
 	private com.bssb.securityConfigration.CustomUserDetailsService userDetailsService;
 	@Autowired
-	private  com.bssb.securityConfigration .ServiceCenterDetailsService serviceCenterService;
+	private  com.bssb.securityConfigration.ServiceCenterDetailsService serviceCenterService;
+	@Autowired
+	private  com.bssb.securityConfigration.AdminDetailsService adminCenterService;
 	
 	//@Autowired
 /* public AuthenticationController(ServiceCenterDetailsService serviceCenterService)
@@ -85,6 +87,32 @@ public class AuthenticationController {
 		}
 		
 		UserDetails userdetails = serviceCenterService.loadUserByUsername(authenticationRequest.getUsername());
+		token = jwtUtil.generateToken(userdetails);
+		}
+		return ResponseEntity.ok(new AuthenticationResponse(token));
+	}
+	@RequestMapping(value = "/authenticateadmin", method = RequestMethod.POST)
+	public ResponseEntity<?> createAdminrAuthenticationToken(@RequestBody com.bssb.securityModel.AuthenticationRequest authenticationRequest)
+			throws Exception {
+		String token=null;;
+		
+	
+		{
+			 System.out.println("control coming in center part in controller");
+		try {
+			
+			System.out.println("request comes here"+" object is "+authenticationRequest.getUsername()+" password"+ authenticationRequest.getPassword());
+			
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+		} catch (DisabledException e) {
+			throw new Exception("USER_DISABLED", e);
+		}
+		catch (BadCredentialsException e) {
+			throw new Exception("INVALID_CREDENTIALS", e);
+		}
+		
+		UserDetails userdetails = adminCenterService.loadUserByUsername(authenticationRequest.getUsername());
 		token = jwtUtil.generateToken(userdetails);
 		}
 		return ResponseEntity.ok(new AuthenticationResponse(token));

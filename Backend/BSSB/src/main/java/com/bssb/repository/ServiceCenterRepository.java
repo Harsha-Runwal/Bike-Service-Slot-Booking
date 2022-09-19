@@ -1,5 +1,6 @@
 package com.bssb.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,5 +24,11 @@ public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,In
 	@Query("update ServiceCenter set capacity=:slots where registration_no=:regNo")
 	void changeSlots(@Param("regNo") int regNo, @Param("slots") int slots);
 
+	
+	@Query("select distinct city from ServiceCenter")
+	ArrayList<String> getCitiesAll();
+	
+	@Query("select c from ServiceCenter c")
+	ArrayList<ServiceCenter> getCityCenters(@Param("city") String city);
 	
 }

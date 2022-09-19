@@ -43,23 +43,19 @@ public class ServiceSlotInfoDao {
 	}*/
 
 	public void addSlot(ServiceSlotInfoTable slot) {
-<<<<<<< HEAD
-		
-=======
+
 		System.out.println("hiiii"+slot.getTotalSlot());
->>>>>>> 30696f5dbd9228a4ec55c6c2e3de37543e16883a
+
 		String email=slot.getCenter().getEmail();
 		  ServiceCenter center=centerRepo.findByEmail(email);
 		  slot.setCenter(center);
 		 slot.setRemainingSlot(slot.getTotalSlot());
 		 slotRepo.save(slot);
-<<<<<<< HEAD
-=======
+
+
 		   
 	
 
-		   
->>>>>>> 30696f5dbd9228a4ec55c6c2e3de37543e16883a
 	}
 	
 	

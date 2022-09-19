@@ -39,7 +39,11 @@ public class PlanDao {
 		
 		 public Plan addPlan(Plan plan)
 		 {
+			 String email= plan.getServiceCenterRef().getEmail();
+			 ServiceCenter center=centerRepo.findByEmail(email);
+			 plan.setServiceCenterRef(center);
 			 return planRepo.save(plan);
+
 		 }
 		 
 		 public List<PlanDto> getPlan(int regNo) throws FileNotFoundException

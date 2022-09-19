@@ -52,14 +52,11 @@ public class BookingTable {
 	
 	private String planName;
 
-<<<<<<< HEAD
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonSetter
 	@JsonIgnore
-	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REMOVE})
-=======
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
 	@JoinColumn(name = "CUSTOMER_ID")
 	private Customer customer;
 
@@ -67,16 +64,19 @@ public class BookingTable {
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private ServiceSlotInfoTable slotId;
 	
-<<<<<<< HEAD
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonIgnore
-	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH})
-=======
-
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
->>>>>>> 2c7be84f583640d7cd740d4c638662e5f3dec69f
 	@JoinColumn(name="SERVICE_CENTER_ID")
 	private ServiceCenter serviceCenterref;
+	
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonIgnore
+	@OneToOne(mappedBy = "bookingId",cascade= {CascadeType.REFRESH,CascadeType.MERGE})
+	private Review review;
+
 	
 	public int getbookingId() {
 		return bookingId;
