@@ -1,5 +1,6 @@
 package com.bssb.dao;
 
+<<<<<<< HEAD
 
 
 import java.util.ArrayList;
@@ -8,22 +9,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+=======
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.bssb.emailsender.EmailCustomer;
 import com.bssb.entity.BookingTable;
-import com.bssb.entity.Customer;
-import com.bssb.entity.ServiceCenter;
 import com.bssb.repository.BookingTableRepository;
-import com.bssb.repository.CustomerRepository;
-import com.bssb.repository.ServiceCenterRepository;
 import com.bssb.repository.ServiceSlotInfoRepository;
 
 @Component
 public class BookingTableDao {
+<<<<<<< HEAD
 	
 	
 	@Autowired
@@ -37,7 +34,11 @@ public class BookingTableDao {
 	private  EmailCustomer emailCustomer;
 	@Autowired
 	private BookingTableRepository bookingRepo;
+=======
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 
+	private BookingTableRepository bookingRepo;
+	private ServiceSlotInfoRepository serviceSlot;
 	
 	public BookingTableDao()
 	{
@@ -47,12 +48,12 @@ public class BookingTableDao {
 	@Autowired
 	public BookingTableDao(BookingTableRepository bookingRepo)
 	{
-		
 		this.bookingRepo = bookingRepo;
 	}
 	
-	public ResponseEntity<String> addBookingDetails(BookingTable bookingObject)
+	public BookingTable addBookingDetails(BookingTable booking)
 	{
+<<<<<<< HEAD
 		System.out.println(bookingObject);
 		String customerEmail=bookingObject.getCustomer().getEmail();
 		System.out.println(customerEmail);
@@ -119,6 +120,10 @@ public class BookingTableDao {
 	{
 		bookingRepo.deleteById(bookingId);
 		return "deleted";
+=======
+		
+		return bookingRepo.save(booking);
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 	}
 	
 	

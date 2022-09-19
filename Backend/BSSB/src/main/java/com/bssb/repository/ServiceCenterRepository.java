@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bssb.entity.ServiceCenter;
@@ -14,9 +11,8 @@ import com.bssb.entity.ServiceCenter;
 @Repository
 public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,Integer>{
 
-	
-
 	ServiceCenter findByName(String Name);
+<<<<<<< HEAD
 	ServiceCenter findByRegNo(int regNo);
 	ServiceCenter findByEmail(String email);
 	
@@ -31,4 +27,6 @@ public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,In
 	@Query("select c from ServiceCenter c")
 	ArrayList<ServiceCenter> getCityCenters(@Param("city") String city);
 	
+=======
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 }

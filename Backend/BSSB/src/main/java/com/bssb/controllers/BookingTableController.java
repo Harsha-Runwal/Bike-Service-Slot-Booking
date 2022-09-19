@@ -1,27 +1,14 @@
 package com.bssb.controllers;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.bssb.dao.BookingTableDao;
-import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.entity.BookingTable;
+<<<<<<< HEAD
 import com.bssb.entity.Customer;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
@@ -31,20 +18,20 @@ import com.bssb.securityConfigration.CustomJwtAuthenticationFilter;
 import com.bssb.securityConfigration.JwtUtil;
 
 @CrossOrigin
+=======
+
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 @RestController
 @RequestMapping(path = "/booking")
 public class BookingTableController {
 
 	@Autowired
 	private BookingTableDao dao;
-	@Autowired
-	private ServiceSlotInfoDao slotDao;
-	
-	
 	
 	@PostMapping("/newbooking")
-	public ResponseEntity<String> addBooking(@RequestBody BookingTable bookingObject)
+	public BookingTable addBooking(@RequestBody BookingTable booking)
 	{
+<<<<<<< HEAD
 		//String jwtToken =  authObjet.extractJwtFromRequest(request);
 		//UserDetails userDetails = new User(jwtTokenUtil.getUsernameFromToken(jwtToken)
 		return dao.addBookingDetails(bookingObject);
@@ -95,9 +82,11 @@ public class BookingTableController {
 	{
 		System.out.println(bookingId);
 		return dao.deleteBooking(bookingId);
+=======
+		return dao.addBookingDetails(booking);
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 	}
 	
 	
 
 }
-

@@ -1,11 +1,5 @@
 package com.bssb.entity;
 
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,20 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Table
 public class BookingTable {
@@ -43,23 +25,27 @@ public class BookingTable {
 	private String modelNo;
 
 	@Column
+	private int slotId;
+
+	@Column
 	private boolean status;
 
 	@Column
 	private float totalCost;
-	@Column
-	private String bookingDate;
-	
-	private String planName;
 
+<<<<<<< HEAD
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonSetter
 	@JsonIgnore
 	@ManyToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
+=======
+	@ManyToOne(cascade = CascadeType.ALL)
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 	@JoinColumn(name = "CUSTOMER_ID")
-	private Customer customer;
+	private Customer customerId;
 
+<<<<<<< HEAD
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private ServiceSlotInfoTable slotId;
@@ -78,21 +64,20 @@ public class BookingTable {
 	private Review review;
 
 	
+=======
+>>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 	public int getbookingId() {
 		return bookingId;
 	}
 
-	
-	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, boolean status,
-			float totalCost, Customer customer,ServiceCenter serviceCenterref,String bookingDate) {
+	public BookingTable(int bookingId, String vehicleRegNo, String modelNo, int slotId, boolean status,
+			float totalCost) {
 		super();
 		this.vehicleRegNo = vehicleRegNo;
 		this.modelNo = modelNo;
+		this.slotId = slotId;
 		this.status = status;
 		this.totalCost = totalCost;
-		this.customer=customer;
-		
-		this.bookingDate=bookingDate;
 	}
 
 	public BookingTable() {
@@ -114,14 +99,16 @@ public class BookingTable {
 	public void setmodelNo(String modelNo) {
 		this.modelNo = modelNo;
 	}
-//	public ServiceSlotInfoTable getSlotId() {
-//		return slotId;
-//	}
-//
-//	public void setSlotId(ServiceSlotInfoTable slotId) {
-//		this.slotId = slotId;
-//	}
-	public boolean getstatus() {
+
+	public int getslotId() {
+		return slotId;
+	}
+
+	public void setslotId(int slotId) {
+		this.slotId = slotId;
+	}
+
+	public boolean isstatus() {
 		return status;
 	}
 
@@ -136,46 +123,5 @@ public class BookingTable {
 	public void settotalCost(float totalCost) {
 		this.totalCost = totalCost;
 	}
-	
-	@JsonIgnore
-	public ServiceCenter getServiceCenterref() {
-		return serviceCenterref;
-	}
-
-	@JsonSetter
-	public void setServiceCenterref(ServiceCenter serviceCenterref) {
-		this.serviceCenterref = serviceCenterref;
-	}
-	
-	@JsonIgnore
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	@JsonSetter
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public String getBookingDate() {
-		return bookingDate;
-	}
-
-	public void setBookingDate(String bookingDate) {
-		this.bookingDate = bookingDate;
-	}
-
-	public String getPlanName() {
-		return planName;
-	}
-
-	public void setPlanName(String planName) {
-		this.planName = planName;
-	}
-
-	
-
-	
-	
 
 }
