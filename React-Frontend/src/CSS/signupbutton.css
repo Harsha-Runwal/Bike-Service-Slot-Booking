@@ -1,0 +1,37 @@
+
+.radio_button input[type="checkbox"]{
+    width:0;
+    height:0;
+    visibility:hidden;
+}
+
+.radio_button .switch_label{
+    width:70px !important;
+    height:20px !important;
+    background-color:#03256C !important;
+    border-radius:100px;
+    position:relative;
+    cursor:pointer;
+    transition:all 0.5s;
+}
+
+.radio_button label::after{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    top:3px;
+    left:4px;
+    background-color:#2541B2;
+    transition:all 1s;
+    
+}
+
+.radio_button input:checked  + label:after{
+    left:calc(100% - 48px);
+}
+
+.radio_button label:active::after{
+    width:80px;
+}
