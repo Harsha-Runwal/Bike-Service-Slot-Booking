@@ -1,8 +1,6 @@
 package com.bssb.entity;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +19,7 @@ public class ServiceSlotInfoTable {
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private int slotId;
 	
-	@Column(name="slot_date")
+	@Column
 	private String date;
 	
 	@Column
@@ -29,32 +28,27 @@ public class ServiceSlotInfoTable {
 	@Column
 	private int remainingSlot;
 	
-	// foregin key in slot table regring to sevicecenter table;
-	
-	@ManyToOne
-	@JoinColumn(name="service_center_id")
-	private ServiceCenter center;
-	
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "SERVICE_CENTER_ID")
+	private ServiceCenter serviceCenterId;
+
+	private int regNo;
 	
 	public ServiceSlotInfoTable()
 	{
 		
 	}
 	
-	public ServiceSlotInfoTable(String date, int totalSlot, int remainingSlot,ServiceCenter center) {
-	
-		 this.date=date;
+	public ServiceSlotInfoTable(String date, int totalSlot, int remainingSlot) {
+		super();
+		this.date = date;
 		this.totalSlot = totalSlot;
 		this.remainingSlot = remainingSlot;
-		this.center=center;
 	}
 
 	public void setSlotId(int slotId) {
 		this.slotId = slotId;
 	}
-
-	
 
 	public String getDate() {
 		return date;
@@ -62,10 +56,6 @@ public class ServiceSlotInfoTable {
 
 	public void setDate(String date) {
 		this.date = date;
-	}
-
-	public int getSlotId() {
-		return slotId;
 	}
 
 	public int getTotalSlot() {
@@ -84,13 +74,11 @@ public class ServiceSlotInfoTable {
 		this.remainingSlot = remainingSlot;
 	}
 
-	public ServiceCenter getCenter() {
-		return center;
+	public int getRegNo() {
+		return regNo;
 	}
 
-	public void setCenter(ServiceCenter center) {
-		this.center = center;
+	public ServiceCenter getServiceCenterId() {
+		return serviceCenterId;
 	}
-
-	
 }

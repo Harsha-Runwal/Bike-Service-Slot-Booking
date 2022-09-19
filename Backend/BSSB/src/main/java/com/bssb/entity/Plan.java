@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,26 +23,15 @@ public class Plan {
 	private int id;
 	private String name;
 	private String description;
-	private String image; 
+	private String image;
 	private float cost;
 	
-	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="SERVICE_CENTER_ID")
-	private ServiceCenter serviceCenterRef;
+	private ServiceCenter serviceCenterId;
 	
-	
-
-	public ServiceCenter getServiceCenterRef() {
-		return serviceCenterRef;
-	}
-
-
-
-	public void setServiceCenterRef(ServiceCenter serviceCenterRef) {
-		this.serviceCenterRef = serviceCenterRef;
-	}
-
-
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Operations> operationList;
 
 	public Plan() {
 	
@@ -93,7 +81,13 @@ public class Plan {
 
 	
 
-	
+	public Set<Operations> getOperationList() {
+		return operationList;
+	}
+
+	public void setOperationList(Set<Operations> operationList) {
+		this.operationList = operationList;
+	}
 	
 	
 	

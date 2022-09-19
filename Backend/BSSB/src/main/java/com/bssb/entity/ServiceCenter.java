@@ -1,7 +1,5 @@
 package com.bssb.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,13 +10,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="SERVICE_CENTER_DETAILS")
 public class ServiceCenter {
 	
-	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	@Column(name="SERVICE_CENTER_ID")
@@ -33,22 +28,9 @@ public class ServiceCenter {
 	private int pincode;
 	@Column(name="REGISTRATION_NO")
 	private int regNo;
-	@Column
-	private String role;
 	
-	private int capacity;
-	@JsonIgnore
-	@OneToMany(mappedBy="center",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
-	private List<ServiceSlotInfoTable> slotList;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="serviceCenterref",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
-	private List<BookingTable> bookingtableref;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="serviceCenterRef",cascade= {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
-	 private List<Plan> plans;
-	
+	@OneToOne(mappedBy = "serviceCenterId" ,cascade = CascadeType.ALL)
+	private ServiceSlotInfoTable capacity;
 	
 	public ServiceCenter() {
 		
@@ -56,7 +38,7 @@ public class ServiceCenter {
 
 
 	public ServiceCenter( String name, String city, String address, String email, String contactNo,
-			String password, int pincode, int regNo, int capacity,List<Plan> plans) {
+			String password, int pincode, int regNo, ServiceSlotInfoTable capacity) {
 		
 		this.name = name;
 		this.city = city;
@@ -67,22 +49,11 @@ public class ServiceCenter {
 		this.pincode = pincode;
 		this.regNo = regNo;
 		this.capacity = capacity;
-		this.plans=plans;
 	}
 
 
 	public int getId() {
 		return id;
-	}
-
-
-	public String getRole() {
-		return role;
-	}
-
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 
@@ -171,49 +142,14 @@ public class ServiceCenter {
 	}
 
 
-	public int getCapacity() {
+	public ServiceSlotInfoTable getCapacity() {
 		return capacity;
 	}
 
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(ServiceSlotInfoTable capacity) {
 		this.capacity = capacity;
 	}
 
-	@JsonIgnore
-	public List<BookingTable> getBookingtableref() {
-		return bookingtableref;
-	}
 
-
-	public void setBookingtableref(List<BookingTable> bookingtableref) {
-		this.bookingtableref = bookingtableref;
-	}
-
-
-	public List<ServiceSlotInfoTable> getSlotList() {
-		return slotList;
-	}
-
-
-	public void setSlotList(List<ServiceSlotInfoTable> slotList) {
-		this.slotList = slotList;
-	}
-
-
-	public List<Plan> getPlans() {
-		return plans;
-	}
-
-
-	public void setPlans(List<Plan> plans) {
-		this.plans = plans;
-	}
-
-
-	
-	
-	
-	
-	
 }
