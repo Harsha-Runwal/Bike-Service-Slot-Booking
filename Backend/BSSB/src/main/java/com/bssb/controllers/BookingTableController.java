@@ -1,14 +1,23 @@
 package com.bssb.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bssb.dao.BookingTableDao;
+import com.bssb.dao.ServiceSlotInfoDao;
 import com.bssb.entity.BookingTable;
-<<<<<<< HEAD
+
 import com.bssb.entity.Customer;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.entity.ServiceSlotInfoTable;
@@ -18,20 +27,20 @@ import com.bssb.securityConfigration.CustomJwtAuthenticationFilter;
 import com.bssb.securityConfigration.JwtUtil;
 
 @CrossOrigin
-=======
-
->>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 @RestController
 @RequestMapping(path = "/booking")
 public class BookingTableController {
 
 	@Autowired
 	private BookingTableDao dao;
-	
+	@Autowired
+	private ServiceSlotInfoDao slotDao;
+
+
+
 	@PostMapping("/newbooking")
-	public BookingTable addBooking(@RequestBody BookingTable booking)
+	public ResponseEntity<String> addBooking(@RequestBody BookingTable bookingObject)
 	{
-<<<<<<< HEAD
 		//String jwtToken =  authObjet.extractJwtFromRequest(request);
 		//UserDetails userDetails = new User(jwtTokenUtil.getUsernameFromToken(jwtToken)
 		return dao.addBookingDetails(bookingObject);
@@ -46,15 +55,11 @@ public class BookingTableController {
 	}*/
 	
 	//all bookings for today
-
-
 		
-
 	// get using email email
 	@GetMapping("/getTodaysBooking/{email}/{date}")
 	public List<BookingTable> getTodaysBooking(@PathVariable String email, @PathVariable String date)
 	{
-
 		return dao.getTodaysBooking(email,date);
 	}
 	
@@ -64,8 +69,6 @@ public class BookingTableController {
 	public List<BookingTable> getHistory(@PathVariable String startdate, @PathVariable String enddate, @PathVariable String email)
 	{
 		return dao.bookingHistory(startdate,enddate,email);
-
-
 	}
 	
 	
@@ -73,7 +76,6 @@ public class BookingTableController {
 	public BookingTable updateBooking(@RequestBody BookingTable updatedBooking)
 	{
 		return  dao.updateBooking(updatedBooking);
-
 	}
 	
 	
@@ -82,11 +84,8 @@ public class BookingTableController {
 	{
 		System.out.println(bookingId);
 		return dao.deleteBooking(bookingId);
-=======
-		return dao.addBookingDetails(booking);
->>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
 	}
-	
-	
+
+
 
 }

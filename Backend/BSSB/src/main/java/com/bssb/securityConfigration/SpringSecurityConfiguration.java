@@ -64,7 +64,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter{
 				"/plan/getPlans/{regNo}","/center/getAll","/center/getAllNames","/center/getCenterByName/{name}","/center/getCenterByCity/{city}",
 				"/slotmanagement/getSlots/{regNo}/{date}","/booking/newbooking","/slotmanagement/getSlot/{regNo}","/booking/getTodaysBooking/{email}/{date}","/center//register","/center/getCities",
 				"/plan/uploadImage","/plan/images/{imageName}","/center/register","plan/images/{imageName}","/center/updateServiceCenter","/slotmanagement/addSlots","/booking/getBookingId",
-				"/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}").permitAll().anyRequest().authenticated()
+				"/booking/deleteBooking/{bookingId}","booking/bookingHistory/{startdate}/{enddate}/{centerName}","/booking/getTodaysBooking/{email}/{date}","/booking/bookingHistory/{startdate}/{enddate}/{centerName}",
+				"/customer/forgetPaswword/{email}/{securityAnswer}","/customer/setpassword/{email}/{password}").permitAll().anyRequest().authenticated()
 
 	
 

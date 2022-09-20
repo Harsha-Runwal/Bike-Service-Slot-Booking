@@ -1,15 +1,16 @@
 package com.bssb.dao;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.Iterator;
-=======
->>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
+
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bssb.dtos.ServiceCenterDto;
 import com.bssb.entity.ServiceCenter;
 import com.bssb.repository.ServiceCenterRepository;
 
@@ -17,11 +18,13 @@ import com.bssb.repository.ServiceCenterRepository;
 public class ServiceCenterDao {
 	
 	
+
 	  private ServiceCenterRepository centerRepo;
-	   
+
 	  public ServiceCenterDao() {
-		  
+
 	  }
+
 	  @Autowired
 	  public ServiceCenterDao(ServiceCenterRepository centerRepo) {
 		   this.centerRepo=centerRepo; 
@@ -31,18 +34,36 @@ public class ServiceCenterDao {
 	  {
 		   return centerRepo.save(center);
 	  }
-	  
-	  public List<ServiceCenter> GetAll()
+
+	  public List<ServiceCenterDto> GetAll()
 	  {
-		  return centerRepo.findAll();
+		  List <ServiceCenter> centerList= centerRepo.findAll();
+		  List<ServiceCenterDto> centerDtoList=new ArrayList<>();
+		  for(ServiceCenter center:centerList)
+		  {
+			 ServiceCenterDto dto=new ServiceCenterDto();
+			   dto.setName(center.getName());
+			   dto.setEmail(center.getEmail());
+			   dto.setCity(center.getCity());
+			   dto.setAddress(center.getAddress());
+			   dto.setRegNo(center.getRegNo());
+			    centerDtoList.add(dto);
+		  }
+		  return centerDtoList;
 	  }
-	  
-	  public ServiceCenter getByName(String name)
+
+	  public ServiceCenterDto getByName(String name)
 	  {  
-		  return centerRepo.findByName(name);
+		   ServiceCenter center=centerRepo.findByName(name);
+		   ServiceCenterDto centerDto=new ServiceCenterDto();
+		    centerDto.setName(center.getName());
+		    centerDto.setRegNo(center.getRegNo());
+		    centerDto.setEmail(center.getEmail());
+		    centerDto.setAddress(center.getAddress());
+		    centerDto.setCity(center.getCity());
+		    return centerDto;
 	  }
-<<<<<<< HEAD
-	  
+
 	  //service center can update capacity, contact details, email,name
 	  public String updateCenterDetails(ServiceCenter serviceCenter)
 	  {
@@ -74,7 +95,6 @@ public class ServiceCenterDao {
 		  }
 		  return nameList;
 	  }
-	  
-=======
->>>>>>> 05e9354aef8ac9d3a2eb827eaac14fec2d26cd6a
+
 }
+
