@@ -29,6 +29,10 @@ public interface ServiceCenterRepository extends JpaRepository <ServiceCenter,In
 	
 	@Query("select c from ServiceCenter c")
 	ArrayList<ServiceCenter> getCityCenters(@Param("city") String city);
+
 	
+	//select *from service_center_details where city="pune" and name="omsai";
+		@Query("select c from ServiceCenter c where c.city=:city and c.name=:centerName")
+		ServiceCenter findByCityCenter(@Param("city") String city, @Param("centerName") String centerName);
 
 }

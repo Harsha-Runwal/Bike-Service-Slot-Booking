@@ -29,6 +29,8 @@ public interface BookingTableRepository extends JpaRepository<BookingTable, Inte
 	@Query("select c from BookingTable c where c.serviceCenterref=:centerId and c.bookingDate in(:startdate,:enddate)")
 	List<BookingTable> bookingHistory(@Param("centerId") ServiceCenter centerId, @Param("startdate") String startdate, @Param("enddate") String enddate);
 	
-	
+	//get bookings by centerId
+			@Query("select c from BookingTable c where c.serviceCenterref.id=:centerId")
+			List<BookingTable> bookingByCenterId(@Param("centerId") int centerId);
 	
 }

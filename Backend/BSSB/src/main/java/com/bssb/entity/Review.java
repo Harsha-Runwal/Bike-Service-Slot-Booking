@@ -10,33 +10,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table
 public class Review {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "booking_Id")
+	@Column(name = "review_Id")
 	private int id;
 	@Column
 	private int rating;
 	@Column
 	private String comment;
 	
-	@OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE}
-)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonIgnore
+	@OneToOne(cascade= {CascadeType.REFRESH,CascadeType.MERGE})
 	@JoinColumn(name = "BOOKING_ID")
 	private BookingTable bookingId;
+	
+	
 	
 	public Review()
 	{
 		
 	}
-	public Review(int rating, String comment) {
+	
+	
+	public Review(int id, int rating, String comment, BookingTable bookingId) {
 		super();
+		this.id = id;
 		this.rating = rating;
 		this.comment = comment;
+		this.bookingId = bookingId;
 	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -55,9 +69,13 @@ public class Review {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	
+	@JsonIgnore
 	public BookingTable getBookingId() {
 		return bookingId;
 	}
+	
+	@JsonSetter
 	public void setBookingId(BookingTable bookingId) {
 		this.bookingId = bookingId;
 	}
